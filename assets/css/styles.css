@@ -164,7 +164,8 @@ body,html {
   .footer {
     margin-bottom: 0px;
   }
-  p.copyright {
+  p.copyright,
+  p.copyright a {
     color: #fff;
     text-align: center;
     font-size: 17px;
