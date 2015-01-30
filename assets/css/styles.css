@@ -19,6 +19,8 @@ ul {
 
 .row {
   margin-bottom: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .sectionHeader {
