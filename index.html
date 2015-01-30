@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- Styles -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<title>Fabian's Resume/Portfolio</title>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand" href="#">
+					Fabian Buentello
+				</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+					<li class="hidden active">
+						<a href="#page-top">f</a>
+					</li>
+					<li class="page-scroll">
+						<a id="navProfile">Profile</a>
+					</li>
+					<li class="page-scroll">
+						<a id="navSkills">Skills</a>
+					</li>
+					<li class="page-scroll">
+						<a id="navResume">Resume</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+	<div id="jumboParallax" class="jumboParallax">
+		<div class="row" style="margin-right:0px">
+			<div class="col-md-12">
+				<div class="paralaxTitle">
+					<h1>Fabian Buentello</h1>
+					<h3>Software Developer</h3>
+				</div>
+				<a id="scrollDown">
+					<i class="fa fa-code fa-5x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- Profile -->
+	<div id="profile" class="Profile section">
+		<div class="container">
+			<div class="col-md-12 sectionHeader">
+				<h2>Personal Profile</h2>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="thumbnail col-xs-4">
+					<img src="assets/images/profilePic.JPG" alt="Profile Image">
+				</div>
+				<div class="caption col-xs-8">
+					<h3>Fabian Buentello</h3>
+					<h5> Software Developer </h5>
+					<p>
+						Ambitious developer passionate about creating Mobile and Web experiences for users. I enjoy working on projects that challenges me not only as a developer, but as a person as well. I find no pleasure in developing new technology using old languages. I am constantly adapting and then readapting to this ever changing world we call life.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Skills -->
+	<div id="skills" class="Skills section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 sectionHeader">
+					<h2>Skills</h2>
+				</div>
+				<div class="row skills">
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<i class="fa fa-mobile fa-5x"></i>
+							<h3>Mobile</h3>
+							<div class="caption">
+								<p>Developing for both iOS(2 yrs) and Android(1 yr) is by far the most exciting type of development for me. I have developed from a fully native social Networking app to communicating via Bluetooth between mobile device and micro-controller.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<img src="assets/svg/programming.svg">
+							<h3>Programming</h3>
+							<div class="caption">
+								<p>Have a strong fundamental understanding of languages such as Java, C, and C++. Have used these languages to build native applications for Mac and PC. Along with using C++ to program mBed Micro-controllers.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<img src="assets/svg/circuit.svg">
+							<h3>Hardware</h3>
+							<div class="caption">
+								<p>Experience with micro-controllers from manufactures like Arduino, BeagleBone, Raspberry Pi, mBed, and Texas Instruments. Experiments include using relays to control components such as servos, motors, and solenoids.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<i class="fa fa-code fa-5x"></i>
+							<h3>Front End</h3>
+							<div class="caption">
+								<p>From HTML,CSS, and JS to more advance frameworks such as Angular.JS and LESS. I am constantly learning new ways to implement old methods. I look forward to what new challenges web development brings me.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<i class="fa fa-terminal fa-5x"></i>
+							<h3>Back End</h3>
+							<div class="caption">
+								<p>With early experiences with scripting languages such as PHP to now deploying a server in a matter of minutes using NodeJS. Currently I am fine tuning my skills when it comes to deploying a server using Python and Ruby on Rails.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="thumbnail">
+							<i class="fa fa-database fa-5x"></i>
+							<h3>Database</h3>
+							<div class="caption">
+								<div class="circle" id="circles-1"></div>
+								<p>Currently am using NoSQL databases similar to MongoDB since they go hand in hand with NodeJS. I do have a strong understanding of SQL databases from my experience developing a social networking application.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="endParallax" class="endParallax"></div>
+	<!-- Resume -->
+	<div id="resume" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 sectionHeader">
+					<h2>Resume</h2>
+					<p>My education and experience.</p>
+				</div>
+			</div>
+			<!-- .row -->
+			<div class="row">
+				<div class="col-md-3">
+					<h3>Experience</h3>
+				</div>
+				<div class="col-md-3 col-sm-4">
+					<h4><i class="fa fa-suitcase"></i> Mioty</h4>
+					<i class="fa fa-calendar"></i> 2014 - Present
+				</div>
+				<div class="col-md-6 col-sm-8">
+					<h4>Mobile developer/ Front-end developer / Back-end developer</h4>
+					<p>Developing a platform that allows a rapid creation of Internet of Things applications as well as visualizing collected data via configurable dashboards.</p>
+					<ul>
+						<li>Designed and developed mobile application for iOS and Android platforms.</li>
+						<li>Preformed back-end development using Node.js framework.</li>
+						<li>Primary Developer on Angular front-end</li>
+						<li>Provided support for cloud operations. Developed middleware between front-end/back-end components to Azure Service Bus.</li>
+					</ul>
+					<hr>
+				</div>
+				<div class="col-md-3 col-md-offset-3 col-sm-4">
+					<h4><i class="fa fa-suitcase"></i> SiddyTalk</h4>
+					<i class="fa fa-calendar"></i> 2012 - 2013
+				</div>
+				<div class="col-md-6 col-sm-8">
+					<h4>Mobile developer/ Back-end developer</h4>
+					<p>Led a team of myself and one other person to design and develop a social networking app tailored towards events. Was responsible for setting deadlines and goals.</p>
+					<ul>
+						<li>Database schema design</li>
+						<li>Developed mobile iOS Application</li>
+						<li>Created proof of concept web application for troubleshooting</li>
+						<li>Tracked user metrics and provided user support</li>
+					</ul>
+				</div>
+
+			</div>
+			<hr>
+
+			<!-- .row -->
+			<div class="row">
+				<div class="col-md-3">
+					<h3>Education</h3>
+				</div>
+				<div class="col-md-3 col-sm-4">
+					<h4><i class="fa fa-suitcase"></i> University Of Houston</h4>
+					<i class="fa fa-calendar"></i> 2012 - Present
+				</div>
+				<div class="col-md-6 col-sm-8">
+					<h4>Computer Science</h4>
+					<p>Here I strengthen understanding of languages such as C and C++. I was also introduced to new languages such as Java, C#, MIPS. </p>
+					<hr>
+				</div>
+				<div class="col-md-3 col-md-offset-3 col-sm-4">
+					<h4><i class="fa fa-suitcase"></i> University Of Houston</h4>
+					<i class="fa fa-calendar"></i> 2011 - 2012
+				</div>
+				<div class="col-md-6 col-sm-8">
+					<h4>Computer Engineering</h4>
+					<p>Was taught the fundamentals of circuitry such as gates, decoders, encoders,combinational and sequential circuits. This helped pave a strong foundation into the world of microcontrollers. </p>
+				</div>
+
+			</div>
+		</div>
+		<!-- .container -->
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row footer">
+				<div class="col-sm-12">
+				<p class="copyright">
+						<i class="fa fa-envelope"></i>
+						Fabian.Buentello@gmail.com
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>	<!-- Local Files -->
+	<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
