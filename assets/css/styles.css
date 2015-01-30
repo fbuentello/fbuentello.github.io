@@ -3,22 +3,38 @@ body,html {
 	text-align: center;
 	height: 100%;
   	width: 100%;
-  	font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  	font-family: "HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue",
+                  Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 100;
 	color: #545454;
 }
 
+/* ==========================================================================
+   Misc.
+   ========================================================================== */
 ul {
   text-align: left;
 }
 
-.thumbnail {
-	max-width: 250px;
-	border: 0px;
-	margin: auto;
-	background-color: transparent;
+.row {
+  margin-bottom: 15px;
 }
 
+.sectionHeader {
+  text-align: left;
+  color:#919191;
+}
+
+.thumbnail {
+  max-width: 250px;
+  border: 0px;
+  margin: auto;
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   Page Sections
+   ========================================================================== */
 .Profile {
   margin-bottom: 20px;
 }
@@ -29,18 +45,12 @@ ul {
 }
 
 .Resume {
-  /*margin-bottom: 20px;*/
+  margin-bottom: 20px;
 }
 
-.row {
-	margin-bottom: 15px;
-}
-
-.sectionHeader {
-	text-align: left;
-  color:#919191;
-}
-
+/* ==========================================================================
+   Parallax
+   ========================================================================== */
 #jumboParallax {
   background: url(../images/houston1_edit.jpg) no-repeat center center fixed;
   display: table;
@@ -66,6 +76,16 @@ ul {
 	color: #FFF;
 }
 
+.paralaxTitle {
+  margin: 0 0 100px;
+}
+
+#scrollDown:hover {
+  color:#919191;
+}
+
+/* End Parallax
+   ========================================================================== */
 #endParallax {
   background: url(../images/houston1_edit.jpg) no-repeat center center fixed;
   display: table;
@@ -81,14 +101,10 @@ ul {
 	color: #FFF;
 }
 
-.paralaxTitle {
-	margin: 0 0 100px;
-}
 
-a#scrollDown:hover {
-	color:#919191;
-}
-
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
 .navbar {
     margin-bottom: 0;
     border-bottom: 1px solid rgba(255,255,255,.3);
@@ -134,6 +150,28 @@ a#scrollDown:hover {
     outline: 0;
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+  background: #919191;
+  padding: 20px;
+  font-size: 13px;
+}
+.footer {
+  margin-bottom: 0px;
+}
+p.copyright {
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  margin-bottom: 0px;
+}
+
+
+/* ==========================================================================
+   Responsive Screens
+   ========================================================================== */
 @media(min-width:767px) {
     .navbar {
         padding: 20px 0;
@@ -154,19 +192,3 @@ a#scrollDown:hover {
         border-bottom: 1px solid rgba(255,255,255,.3);
     }
 }
-
-footer {
-  background: #919191;
-  padding: 20px;
-  font-size: 13px;
-}
-.footer {
-  margin-bottom: 0px;
-}
-p.copyright {
-  color: #fff;
-  text-align: center;
-  font-size: 17px;
-  margin-bottom: 0px;
-}
-`

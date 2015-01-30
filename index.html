@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery.js"></script>
@@ -22,36 +23,32 @@
 					Fabian Buentello
 				</a>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 				<ul class="nav navbar-nav">
-					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 					<li class="hidden active">
-						<a href="#page-top">f</a>
+						<a href="#page-top"></a>
 					</li>
 					<li class="page-scroll">
-						<a id="navProfile">Profile</a>
+						<a href="#profile" id="navProfile">Profile</a>
 					</li>
 					<li class="page-scroll">
-						<a id="navSkills">Skills</a>
+						<a href="#skills" id="navSkills">Skills</a>
 					</li>
 					<li class="page-scroll">
-						<a id="navResume">Resume</a>
+						<a href="#resume" id="navResume">Resume</a>
 					</li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container -->
 	</nav>
 	<div id="jumboParallax" class="jumboParallax">
 		<div class="row" style="margin-right:0px">
-			<div class="col-md-12">
+			<div class="col-md-12 page-scroll">
 				<div class="paralaxTitle">
 					<h1>Fabian Buentello</h1>
 					<h3>Software Developer</h3>
 				</div>
-				<a id="scrollDown">
+				<a href="#profile" id="scrollDown">
 					<i class="fa fa-code fa-5x"></i>
 				</a>
 			</div>
@@ -71,7 +68,7 @@
 					<h3>Fabian Buentello</h3>
 					<h5> Software Developer </h5>
 					<p>
-						Ambitious developer passionate about creating Mobile and Web experiences for users. I enjoy working on projects that challenges me not only as a developer, but as a person as well. I find no pleasure in developing new technology using old languages. I am constantly pushing myself to learn new techniques to better myself as a developer.
+						Ambitious developer passionate about creating mobile and web experiences for users. I enjoy working on projects that challenges me not only as a developer, but as a person as well. I find no pleasure in developing new technology using old languages. I am constantly pushing myself to learn new techniques to better myself as a developer.
 					</p>
 				</div>
 			</div>
@@ -91,7 +88,7 @@
 							<i class="fa fa-mobile fa-5x"></i>
 							<h3>Mobile</h3>
 							<div class="caption">
-								<p>Developing for both iOS and Android is by far the most exciting type of development for me. I have developed from a fully native social Networking app to communicating via Bluetooth between mobile device and micro-controller.</p>
+								<p>Developing for both iOS and Android is by far the most exciting type of development for me. I have developed from a fully native social networking app to communicating via Bluetooth between mobile devices and micro-controllers.</p>
 							</div>
 						</div>
 					</div>
@@ -100,7 +97,7 @@
 							<img src="assets/svg/programming.svg">
 							<h3>Programming</h3>
 							<div class="caption">
-								<p>Have a strong fundamental understanding of languages such as Java, C, and C++. Have used these languages to build native applications for Mac and PC. Along with using C++ to program mBed Micro-controllers.</p>
+								<p>Have a strong fundamental understanding of languages such as Java, C, and C++. Have used these languages to build native applications for Mac and PC. Along with using C++ to program mBed micro-controllers.</p>
 							</div>
 						</div>
 					</div>
@@ -149,7 +146,7 @@
 	</div>
 	<div id="endParallax" class="endParallax"></div>
 	<!-- Resume -->
-	<div id="resume" class="section">
+	<div id="resume" class="Resume section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 sectionHeader">
@@ -157,7 +154,6 @@
 					<p>My education and experience.</p>
 				</div>
 			</div>
-			<!-- .row -->
 			<div class="row">
 				<div class="col-md-3">
 					<h3>Experience</h3>
@@ -172,7 +168,7 @@
 					<ul>
 						<li>Designed and developed mobile application for iOS and Android platforms.</li>
 						<li>Preformed back-end development using Node.js framework.</li>
-						<li>Primary Developer on Angular front-end</li>
+						<li>Primary developer on Angular front-end</li>
 						<li>Provided support for cloud operations. Developed middleware between front-end/back-end components to Azure Service Bus.</li>
 					</ul>
 					<hr>
@@ -194,8 +190,6 @@
 
 			</div>
 			<hr>
-
-			<!-- .row -->
 			<div class="row">
 				<div class="col-md-3">
 					<h3>Education</h3>
@@ -220,7 +214,6 @@
 
 			</div>
 		</div>
-		<!-- .container -->
 	</div>
 	<footer>
 		<div class="container">
@@ -233,7 +226,8 @@
 				</div>
 			</div>
 		</div>
-	</footer>	<!-- Local Files -->
+	</footer>
+	<!-- Local Files -->
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
