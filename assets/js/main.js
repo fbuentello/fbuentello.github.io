@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 	var scrollTo = function (pageSection) {
 		$('html,body').animate({
-			scrollTop: $(""+pageSection).offset().top},
+			scrollTop: $(""+pageSection).offset().top -40},
 			1000);
 	}
 	$("#scrollDown").click(function() {
