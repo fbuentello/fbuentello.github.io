@@ -13,6 +13,19 @@ $(function() {
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top -40
         }, 1500);
-        event.preventDefault();
+        // event.preventDefault();
     });
+});
+
+$(document).ready(function() {
+
+    var scrollTo = function (pageSection) {
+        $('html,body').animate({
+            scrollTop: $(""+pageSection).offset().top -40},
+            1500);
+    }
+    $("#scrollDown").click(function() {
+        scrollTo('#profile');
+    });
+
 });
