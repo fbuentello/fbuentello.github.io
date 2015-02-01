@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+=======
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+>>>>>>> fff54175d928a5e9a24f6da137b427f0418e45f6
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery.js"></script>
@@ -12,47 +16,43 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<title>Fabian's Resume/Portfolio</title>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="45">
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container">
-			<div class="navbar-header page-scroll">
+			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
 					<i class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand" href="#">
+				<a class="navbar-brand page-scroll" href="#page-top">
 					Fabian Buentello
 				</a>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 				<ul class="nav navbar-nav">
-					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-					<li class="hidden active">
-						<a href="#page-top">f</a>
+					<li class="hidden">
+						<a href="#page-top"></a>
 					</li>
-					<li class="page-scroll">
-						<a id="navProfile">Profile</a>
+					<li>
+						<a class="page-scroll" href="#profile">Profile</a>
 					</li>
-					<li class="page-scroll">
-						<a id="navSkills">Skills</a>
+					<li>
+						<a class="page-scroll" href="#skills">Skills</a>
 					</li>
-					<li class="page-scroll">
-						<a id="navResume">Resume</a>
+					<li>
+						<a class="page-scroll" href="#resume">Resume</a>
 					</li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container -->
 	</nav>
 	<div id="jumboParallax" class="jumboParallax">
 		<div class="row" style="margin-right:0px">
-			<div class="col-md-12">
+			<div class="col-md-12 page-scroll">
 				<div class="paralaxTitle">
 					<h1>Fabian Buentello</h1>
 					<h3>Software Developer</h3>
 				</div>
-				<a id="scrollDown">
+				<a href="#profile" id="scrollDown">
 					<i class="fa fa-code fa-5x"></i>
 				</a>
 			</div>
@@ -92,7 +92,7 @@
 							<i class="fa fa-mobile fa-5x"></i>
 							<h3>Mobile</h3>
 							<div class="caption">
-								<p>Developing for both iOS and Android is by far the most exciting type of development for me. I have developed from a fully native social Networking app to communicating via Bluetooth between mobile device and micro-controller.</p>
+								<p>Developing for both iOS and Android is by far the most exciting type of development for me. I have developed from a fully native social networking app to communicating via Bluetooth between mobile devices and micro-controllers.</p>
 							</div>
 						</div>
 					</div>
@@ -101,7 +101,7 @@
 							<img src="assets/svg/programming.svg">
 							<h3>Programming</h3>
 							<div class="caption">
-								<p>Have a strong fundamental understanding of languages such as Java, C, and C++. Have used these languages to build native applications for Mac and PC. Along with using C++ to program mBed Micro-controllers.</p>
+								<p>Have a strong fundamental understanding of languages such as Java, C, and C++. Have used these languages to build native applications for Mac and PC. Along with using C++ to program mBed micro-controllers.</p>
 							</div>
 						</div>
 					</div>
@@ -150,7 +150,7 @@
 	</div>
 	<div id="endParallax" class="endParallax"></div>
 	<!-- Resume -->
-	<div id="resume" class="section">
+	<div id="resume" class="Resume section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 sectionHeader">
@@ -158,7 +158,6 @@
 					<p>My education and experience.</p>
 				</div>
 			</div>
-			<!-- .row -->
 			<div class="row">
 				<div class="col-md-3">
 					<h3>Experience</h3>
@@ -173,7 +172,7 @@
 					<ul>
 						<li>Designed and developed mobile application for iOS and Android platforms.</li>
 						<li>Preformed back-end development using Node.js framework.</li>
-						<li>Primary Developer on Angular front-end</li>
+						<li>Primary developer on Angular front-end</li>
 						<li>Provided support for cloud operations. Developed middleware between front-end/back-end components to Azure Service Bus.</li>
 					</ul>
 					<hr>
@@ -195,8 +194,6 @@
 
 			</div>
 			<hr>
-
-			<!-- .row -->
 			<div class="row">
 				<div class="col-md-3">
 					<h3>Education</h3>
@@ -221,20 +218,20 @@
 
 			</div>
 		</div>
-		<!-- .container -->
 	</div>
 	<footer>
 		<div class="container">
 			<div class="row footer">
 				<div class="col-sm-12">
-				<p class="copyright">
+					<p class="copyright">
 						<i class="fa fa-envelope"></i>
-						Fabian.Buentello@gmail.com
-					</p>
+						<a class="copyright"href="mailto:fabian.buentello@gmail.com">Fabian.Buentello@gmail.com</a>
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>	<!-- Local Files -->
-	<script type="text/javascript" src="assets/js/main.js"></script>
-</body>
-</html>
+		</footer>
+		<!-- Local Files -->
+		<script type="text/javascript" src="assets/js/main.js"></script>
+	</body>
+	</html>
