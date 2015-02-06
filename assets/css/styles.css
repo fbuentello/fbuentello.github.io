@@ -39,7 +39,7 @@ body,html {
    Page Sections
    ========================================================================== */
    .Profile {
-    margin-bottom: 20px;
+    margin-bottom: 63px;
   }
 
   .Skills {
@@ -55,7 +55,7 @@ body,html {
    Parallax
    ========================================================================== */
    #jumboParallax {
-    background: url(../images/houston_phone.jpg) no-repeat center;
+    background: url(../images/edited_profile_phone.jpg) no-repeat center;
     display: table;
     height: 100%;
     position: relative;
@@ -90,7 +90,7 @@ body,html {
 /* End Parallax
 ========================================================================== */
 #endParallax {
-  background: url(../images/houston_phone.jpg) no-repeat center;
+  background: url(../images/edited_profile_phone.jpg) no-repeat center;
   display: table;
   height: 10%;
   position: relative;
@@ -179,7 +179,7 @@ body,html {
    @media(min-width:767px) {
 
     #jumboParallax {
-      background: url(../images/houston.jpg) no-repeat center center fixed;
+      background: url(../images/edited_profile_gimp.jpg) no-repeat center center fixed;
       display: table;
       height: 100%;
       position: relative;
@@ -194,7 +194,7 @@ body,html {
     }
 
     #endParallax {
-      background: url(../images/houston.jpg) no-repeat center center fixed;
+      background: url(../images/edited_profile_gimp.jpg) no-repeat center center fixed;
       display: table;
       height: 40%;
       position: relative;
@@ -209,7 +209,7 @@ body,html {
     }
 
     .paralaxTitle {
-      margin: 0 0 100px;
+      margin: 0 0 50px;
     }
 
     .navbar {
