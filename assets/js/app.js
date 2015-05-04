@@ -9,11 +9,15 @@ app.factory('DataFactory', ['$http','$q', function ($http, $q) {
 }]);
 
 app.controller('MainController', ['$scope','DataFactory', function($scope,DataFactory){
+	DataFactory.getData.success(function(response){
+		$scope.personalInfo = response.personalInfo;
+		$scope.skills = response.skills;
+	});
+}]);
 
-DataFactory.getData.success(function(response){
-	$scope.personalInfo = response.personalInfo;
-	$scope.skills = response.skills;
-});
-
-
+app.directive('resumeTemplate', [function () {
+	return {
+		restrict: 'E',
+		templateUrl:'./assets/partials/resume-template.html'
+	};
 }]);

@@ -13,6 +13,7 @@
 	<link rel="shortcut icon" type="image/png" href="/assets/svg/computer.png"/>
 	<title>Fabian Buentello</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
 </head>
 <body ng-app="myApp" ng-controller="MainController" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="45">
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -101,76 +102,7 @@
 		</div>
 	</div>
 	<div id="endParallax" class="endParallax"></div>
-	<!-- Resume -->
-	<div id="resume" class="Resume section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 sectionHeader">
-					<h2>Resume</h2>
-					<p>My education and experience.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<h3>Experience</h3>
-				</div>
-				<div class="col-md-3 col-sm-4">
-					<h4><i class="fa fa-suitcase"></i> Mioty</h4>
-					<i class="fa fa-calendar"></i> 2014 - Present
-				</div>
-				<div class="col-md-6 col-sm-8">
-					<h4>Mobile developer/ Front-end developer / Back-end developer</h4>
-					<p>Developing a platform that allows a rapid creation of Internet of Things applications as well as visualizing collected data via configurable dashboards.</p>
-					<ul>
-						<li>Designed and developed mobile application for iOS and Android platforms.</li>
-						<li>Preformed back-end development using Node.js framework.</li>
-						<li>Primary developer on Angular front-end</li>
-						<li>Provided support for cloud operations. Developed middleware between front-end/back-end components to Azure Service Bus.</li>
-					</ul>
-					<hr>
-				</div>
-				<div class="col-md-3 col-md-offset-3 col-sm-4">
-					<h4><i class="fa fa-suitcase"></i> SiddyTalk</h4>
-					<i class="fa fa-calendar"></i> 2012 - 2013
-				</div>
-				<div class="col-md-6 col-sm-8">
-					<h4>Mobile developer/ Back-end developer</h4>
-					<p>Led a team of myself and one other person to design and develop a social networking app tailored towards events. Was responsible for setting deadlines and goals.</p>
-					<ul>
-						<li>Database schema design</li>
-						<li>Developed mobile iOS Application</li>
-						<li>Created proof of concept web application for troubleshooting</li>
-						<li>Tracked user metrics and provided user support</li>
-					</ul>
-				</div>
-
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-md-3">
-					<h3>Education</h3>
-				</div>
-				<div class="col-md-3 col-sm-4">
-					<h4><i class="fa fa-suitcase"></i> University Of Houston</h4>
-					<i class="fa fa-calendar"></i> 2012 - Present
-				</div>
-				<div class="col-md-6 col-sm-8">
-					<h4>Computer Science</h4>
-					<p>Here I strengthen my understanding of languages such as C and C++. I was also introduced to new languages such as Java, C#, MIPS. </p>
-					<hr>
-				</div>
-				<div class="col-md-3 col-md-offset-3 col-sm-4">
-					<h4><i class="fa fa-suitcase"></i> University Of Houston</h4>
-					<i class="fa fa-calendar"></i> 2011 - 2012
-				</div>
-				<div class="col-md-6 col-sm-8">
-					<h4>Computer Engineering</h4>
-					<p>Was taught the fundamentals of circuitry such as logic gates, decoders, encoders, combinational and sequential circuits. This helped pave a strong foundation into the world of micro-controllers. </p>
-				</div>
-
-			</div>
-		</div>
-	</div>
+	<resume-template></resume-template>
 	<footer>
 		<div class="container">
 			<div class="row footer">
@@ -183,7 +115,7 @@
 			</div>
 		</div>
 	</footer>
-	<!-- Local Files -->
+		<!-- Local Files -->
 	<script type="text/javascript" src="assets/js/main.js"></script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
 </body>
