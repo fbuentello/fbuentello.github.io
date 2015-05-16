@@ -33,3 +33,6 @@
 .language .tile .langColor {
   color: #fff;
 }
+.tileHeader {
+  font-weight: 300;
+}
