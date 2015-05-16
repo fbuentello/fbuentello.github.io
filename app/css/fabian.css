@@ -1,0 +1,35 @@
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.header.fixed,
+.header.open,
+.menu-open .header {
+  background-color: #5E5E5E;
+}
+.multiColor {
+  color: #9E9E9E;
+}
+.multiBGColor,
+.header .nav > li > a .header-close:after {
+  background-color: #9E9E9E;
+}
+.content-heading {
+  background: url(../images/backgrounds/houston.jpg) no-repeat center;
+  /*display: table;*/
+  height: 40%;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 90px 0 70px 0;
+  text-align: center;
+}
+.language .tile {
+  background-color: #e2e2e2;
+}
+.language .tile .langColor {
+  color: #fff;
+}
