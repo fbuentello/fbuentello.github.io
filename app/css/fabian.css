@@ -31,7 +31,49 @@
   background-color: #e2e2e2;
 }
 .language .tile .langColor {
-  color: #fff;
+  background-color: #fff;
+}
+.language .tile .javascript {
+  background-color: #c8102e;
+  width: 90%;
+}
+.language .tile .javascript a {
+  color: #c8102e;
+}
+.language .tile .iOS {
+  background-color: #9c27b0;
+  width: 95%;
+}
+.language .tile .iOS a {
+  color: #9c27b0;
+}
+.language .tile .android {
+  background-color: #4caf50;
+  width: 50%;
+}
+.language .tile .htmlCSS {
+  background-color: #2196f3;
+  width: 85%;
+}
+.language .tile .htmlCSS a {
+  color: #2196f3;
+}
+.language .tile .rubyOnRails {
+  background-color: #2196f3;
+  width: 67%;
+}
+.language .tile .rubyOnRails a {
+  color: #2196f3;
+}
+.language .tile .php {
+  background-color: #2196f3;
+  width: 85%;
+}
+.language .tile .php a {
+  color: #2196f3;
+}
+.language .tile .aTagInsideLanguage {
+  color: #4caf50;
 }
 .tileHeader {
   font-weight: 300;
