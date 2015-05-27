@@ -32,6 +32,7 @@
 }
 .language .tile .langColor {
   background-color: #fff;
+  color: #fff;
 }
 .language .tile .javascript {
   background-color: #c8102e;
@@ -52,25 +53,25 @@
   width: 50%;
 }
 .language .tile .htmlCSS {
-  background-color: #2196f3;
+  background-color: #f16529;
   width: 85%;
 }
 .language .tile .htmlCSS a {
-  color: #2196f3;
+  color: #f16529;
 }
 .language .tile .rubyOnRails {
-  background-color: #2196f3;
+  background-color: #a62c39;
   width: 67%;
 }
 .language .tile .rubyOnRails a {
-  color: #2196f3;
+  color: #a62c39;
 }
 .language .tile .php {
-  background-color: #2196f3;
+  background-color: #6c7eb7;
   width: 85%;
 }
 .language .tile .php a {
-  color: #2196f3;
+  color: #6c7eb7;
 }
 .language .tile .aTagInsideLanguage {
   color: #4caf50;

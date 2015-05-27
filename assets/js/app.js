@@ -8,7 +8,7 @@ app.factory('DataFactory', ['$http','$q', function ($http, $q) {
 	};
 }]);
 
-app.controller('MainController', ['$scope','DataFactory', function($scope,DataFactory){
+app.controller('MainController', ['$scope','DataFactory', function($scope, DataFactory){
 	DataFactory.getData.success(function(response){
 		$scope.personalInfo = response.personalInfo;
 		$scope.skills = response.skills;

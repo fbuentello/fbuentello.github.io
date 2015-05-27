@@ -37,7 +37,7 @@
 		<ul class="nav nav-list pull-left">
 			<li>
 				<a class="menu-toggle" href="#profile">
-					<span class="access-hide">John Smith</span>
+					<span class="access-hide">Fabian Buentello</span>
 					<span class="avatar avatar-sm"><img alt="alt text for John Smith avatar" src="images/users/edited_profile_phone.jpg"></span>
 					<span class="header-close icon icon-close"></span>
 				</a>
@@ -63,15 +63,12 @@
 
 			<!-- LANGUAGES -->
 			<section class="container">
-			<h1 class="heading text-center multiColor" style="font-weight:300">What Fabian is doing</h1>
+				<h1 class="heading text-center multiColor" style="font-weight:300">Fabian's Top 4<img style="height:30px" src="http://25.media.tumblr.com/tumblr_mbsn7lOxp21qfqgb9o1_r1_500.gif" alt=""></h1>
 
-				<div ng-repeat="color in lightColors" style="background-color:{{color}}; height:100px; width:100px">
-					<p>Background: {{color}}</p>
-				</div>
 				<div class="row">
 					<h2 class="content-sub-heading multiColor">Languages/Skills</h2>
 					<div class="col-xs-6" ng-repeat="lang in languages">
-						<div class="tile-wrap language">
+						<div ng-show="lang" class="tile-wrap language">
 							<div class="tile tile-collapse">
 								<div class="tile-toggle" data-parent=".content" data-target="#tile-collapse-{{$index}}" data-toggle="tile">
 									<div class="tile-inner langColor {{lang.langClass}}">
@@ -92,6 +89,7 @@
 
 			<!-- SKILLS -->
 			<section class="container">
+				<h1 class="heading text-center multiColor" style="font-weight:300">What Fabian is working on</h1>
 				<div class="row">
 
 						<h2 class="content-sub-heading multiColor">Projects and Hacks</h2>
