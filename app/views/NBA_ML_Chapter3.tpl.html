@@ -1,0 +1,1167 @@
+<section class="container">
+    <div class="row margin10">
+        <div class="col-xs-12">
+            <a class="pull-left" ui-sref="blog.NBA_Machine_Learning_Tutorial2">
+            <i class="fa fa-arrow-left"></i>Clean Data
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <h2 class="heading multiColor" id="structure-data">Output Data</h2>
+            <p>I'll be honest, I restructured my data at least four times throughout this project. I'm going to show you the final version of my data structure. The structure of the data in the database will be the following:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:340px">// Final Structure
+[
+    {
+        "Player" : "LeBron James",
+        "Pos" : "SF",
+        "Seasons" : [
+            {
+                "totals" : {
+                    ......
+                    ......
+                },
+                "advanced" : {
+                    ......
+                    ......
+                }
+            },
+            ......
+        ]
+    },
+    ....
+]</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Let's move into our <code>buildData()</code> function. All the following work will be done in <code>.on("data", fun..</code>. Since MongoDB deals with objects, we are going to make one giant object in our program called <code>DB_OBJ</code>. Lets put <code>DB_OBJ</code> with our modules. So add the following line to your <code>Modules Section</code>:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:20px">var DB_OBJ = {};</div>
+
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Next, let's jump inside of our <code>.on("data")</code> method inside of <code>buildData()</code>. Around this time of development I was using a debugger like <a href="https://github.com/node-inspector/node-inspector" title="node-inspector">node-inspector</a>. It'll be too much of a hassle to bring the <code>debugging</code> aspect into this tutorial. So I'm just going to show you how the data looks like at this point of the program.</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/node_inspector_01.png" alt="node_inspector_01.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>This data is missing some very important information that we need to know. We don't know what season this data belongs to, or what stat folder it came from(totals, advanced). So we need to parse out the <strong><u>stat type</u></strong> and <strong><u>season</u></strong> from the file path, time for some good old fashion regex! I took it upon myself to find out the regex formula we are going to use.</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/node_inspector_02.png" alt="node_inspector_02.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Inside of <code>buildData()</code>, make <code>.transform()</code>look like this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:100px">.transform(function(data){
+    var parsedPath = path.match(/(advanced|totals)|(\d{4})/g);
+    data.statType = parsedPath[0];
+    data.Season = parsedPath[1];
+    return data;
+})</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Let's check the debugger to make sure we added <code>statType</code> and <code>Season</code> to our <code>data</code> variable. Don't worry about running it right now.</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/node_inspector_03.png" alt="node_inspector_03.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Now since <code>Season</code> and <code>statType</code> have been added to data, we can now start playing with <code>DB_OBJ</code>.</p>
+            <p>In this object, the player's name will be the key and their seasons/stats will be the value. Let me show you what I mean:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:195px">{
+    "&lt;PLAYER NAME&gt;": { // LeBron James
+        "&lt;SEASON YEAR&gt;" : { // 2007
+            "advanced": {
+                ... // Stats from advanced CSV
+            },
+            "totals": {
+                ... // Stats from totals CSV
+            },
+        }
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>I know this data structure does not match up with our final data structure, don't worry, we will be fixing that a bit later.</p>
+            <p>Since we are going to use the player names as a key in the <code>DB_OBJ</code>. We need to check if that name already exists in the object. Put the following code in your <code>.on("data")</code> inside of <code>buildData()</code>:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:115px">console.log(data);
+// Does Player exist?
+if (!DB_OBJ.hasOwnProperty(data.Player)) {
+    // Player doesn't exist
+} else {
+    // Player does exist
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Lets test out the <code>=BUILD</code>, so run the following command:</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>Nothing crazy going on here, just checking if the player exists. Place the following lines inside of the <code>if(!DB_OBJ.hasOwnProperty(data.Player))</code> statement:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:100px">// Player doesn't exist
+DB_OBJ[data.Player] = {}; // 1
+DB_OBJ[data.Player].Seasons = {}; // 2
+DB_OBJ[data.Player].Seasons[data.Season] = {}; // 3
+DB_OBJ[data.Player].Seasons[data.Season][data.statType] = {}; // 4
+DB_OBJ[data.Player].Seasons[data.Season][data.statType] = data; // 5</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>This is a data example and how the above code would interact with it:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:130px">// Data Example, DONT PASTE THIS!!
+data = {
+    Player : "LeBron James",
+    Season : "2007",
+    statType: "advanced",
+    G : "78",
+    Age: "22"
+};</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 1</strong></u> - Create a new player in <code>DB_OBJ</code>. Example:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:65px">// DB_OBJ[data.Player] = {};
+{
+    "LeBron James": {}
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 2</strong></u> - Create a <code>Seasons</code> property in Player's Object. Example:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:100px">// DB_OBJ[data.Player].Seasons = {};
+{
+    "LeBron James": {
+        "Seasons" : {}
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 3</strong></u> - Add year to <code>Seasons</code> object. Example:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:130px">// DB_OBJ[data.Player].Seasons[data.Season] = {};
+{
+    "LeBron James": {
+        "Seasons": {
+            "2007" : {}
+        }
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 4</strong></u> - Add stats to <code>Year</code> object. Example:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:200px">// DB_OBJ[data.Player].Seasons[data.Season][data.statType] = {};
+{
+    "LeBron James": {
+        "Seasons":{
+            "2007" : {
+                "advanced": {
+
+                }
+            }
+        }
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 5</strong></u> - Add all of <code>data</code> to <code>statType</code> object. Example:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:200px">// DB_OBJ[data.Player].Seasons[data.Season][data.statType] = data;
+{
+    "LeBron James": {
+        "Seasons":{
+            "2007" : {
+                "advanced": {
+                    // ALL DATA HERE!!
+                }
+            }
+        }
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>If you're thinking to yourself, <strong><em>"I'm sure this section irritates Fabian a lot, we all know he hates long lines and those are some long ass lines!"</em></strong> Yea, you're right and we haven't even added the <code>else</code> portion! Lets get rid of all these <code>data.&lt;something&gt;</code> to help shorten the lines. Inside of <code>.on("data")</code>, erase everything and replace it with this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:390px">// 1
+var name = data.Player,
+    yr = data.Season,
+    stat = data.statType;
+
+// Does Player exist?
+if (!DB_OBJ.hasOwnProperty(name)) {
+    // Player doesn't exist
+
+    // 2
+    var tmpPlayer = {
+        Player: name,
+        Pos: data.Pos,
+        Seasons: {}
+    };
+    DB_OBJ[name] = tmpPlayer;
+    DB_OBJ[name].Seasons[yr] = {};
+} else if(!DB_OBJ[name].Seasons.hasOwnProperty(yr)) {
+        // Player Exists, Season doesnt exist
+        DB_OBJ[name].Seasons[yr] = {};
+}
+// 3
+DB_OBJ[name].Seasons[yr][stat] = {};
+DB_OBJ[name].Seasons[yr][stat] = data;</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 1</strong></u> -  We are reducing the variables to a single word to reduce the length of the line.</p>
+            <p><u><strong>Part 2</strong></u> -  This <code>tmpPlayer</code> is helping us for the final data structure.</p>
+            <p><u><strong>Part 3</strong></u> - we are adding the stats to the player object.</p>
+            <p>OK now in the <code>.on("end")</code> portion, let's print out our <code>DB_OBJ</code>:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:85px">.on("end", function(){
+    console.log("done");
+    console.log(DB_OBJ);
+    _aCallback();
+});</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Let's run it:</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>You should've gotten something similar to this:</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/console_012.png" alt="console_012.png">
+
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Yeah I know, I know. This data is starting to be really hard to examine, I think it's time we put it in a file.</p>
+            <p>In your <code>Modules Section</code>, add the following line:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:20px">var jsonfile = require('jsonfile');</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>and replace <code>_a.each()</code> callback to this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:100px">function (err) {
+    console.log('*****DONE BUILDING DATA*****');
+    jsonfile.writeFile('./data/outputFile.json', DB_OBJ, { spaces: 4}, function(err) {
+        console.error(err);
+    });
+});</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>At the end, your entire <code>buildData()</code> function should look like this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:500px">var buildData = function(paths) {
+    _a.each(paths, function (path, _aCallback) {
+
+        // Create File Stream
+        var inputStream = fs.createReadStream(path);
+
+        // Read in CSV file
+        fast_csv.fromStream(inputStream,{
+            headers: true,
+            ignoreEmpty: true
+        })
+        .transform(function(data){
+            var parsedPath = path.match(/(advanced|totals)|(\d{4})/g);
+            data.statType = parsedPath[0];
+            data.Season = parsedPath[1];
+            return data;
+        })
+        .on("data", function(data){
+
+            var name = data.Player,
+                yr = data.Season,
+                stat = data.statType;
+
+            // Does Player exist?
+            if (!DB_OBJ.hasOwnProperty(name)) {
+                // Player doesn't exist
+
+                // helps us for the final data structure.
+                var tmpPlayer = {
+                    Player: name,
+                    Pos: data.Pos,
+                    Seasons: {}
+                };
+                DB_OBJ[name] = tmpPlayer;
+                DB_OBJ[name].Seasons[yr] = {};
+            } else if(!DB_OBJ[name].Seasons.hasOwnProperty(yr)) {
+                    // Player Exists, Season doesnt exist
+                    DB_OBJ[name].Seasons[yr] = {};
+            }
+            // add the stats to the player object.
+            DB_OBJ[name].Seasons[yr][stat] = {};
+            DB_OBJ[name].Seasons[yr][stat] = data;
+        })
+        .on("end", function(){
+            console.log("done");
+            console.log(DB_OBJ);
+            _aCallback();
+        });
+
+    }, function (err) {
+        console.log('*****DONE BUILDING DATA*****');
+        jsonfile.writeFile('./data/outputFile.json', DB_OBJ, { spaces: 4}, function(err) {
+            console.error(err);
+        });
+    });
+};</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Lets run it:</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>It should create a file called <strong><u>outputFile.json</u></strong> that should look like this, if not don't worry, a code check up is soon:</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_02.png" alt="sublime_02.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>OK let's remove our <code>console.log(DB_OBJ)</code> and let's add a few more years to our <code>=TEST</code>. Inside of your <code>Main Function</code> change <var><code>endYr</code></var> from <code>1982</code> to <code>1983</code>:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:35px">// If Test is set, only get a few years
+var endYr = (isTest) ? 1983 : 2016;</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Let's run it</p>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>Did you get find a player named "<u><strong>undefined</strong></u>" in your <strong><u>outputFile.json</u></strong>?</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_03.png" alt="sublime_03.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>I would be lying if I said I didn't freak out when I saw this while writing this tutorial. Can anyone guess what's going on? Let me guess, <strong><em>"Jimmy wants to answer the question."</em></strong> Yes, we only <code>=CLEAN</code> our <code>testData</code> up to 1982. Meaning, every year after that has empty rows, repeating headers,etc. So the only way to fix this is by cleaning more of our test data. Lets change <code>endYr</code> to a later year. Lets make <code>endYr</code> equal to <code>1990</code> when were testing. So change <code>endYr</code> to this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:35px">// If Test is set, only get a few years
+var endYr = (isTest) ? 1990 : 2016;</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>And now lets <u><strong><code>=CLEAN TEST</code></strong></u> our data one more time:</p>
+            <p class="console">$ node buildNBA_Data.js =CLEAN TEST</p>
+            <p>Lets try building it again:</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>Hopefully your <strong><u>outputFile.json</u></strong> looks like this:</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_04.png" alt="sublime_04.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>OK so we're not done cleaning our data yet. I know were about to get to the Mongo portion of the tutorial, but it'll be fast, I promise. Here's our code checkup for the second section:</p>
+            <h3 class="heading multiColor" id="code-checkup_1">Code Checkup</h3>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:500px">/* Modules Section
+============================================= */
+
+var _ = require("underscore");
+var fs = require('fs');
+var fast_csv = require("fast-csv");
+var _a = require("async");
+var jsonfile = require('jsonfile');
+var DB_OBJ = {};
+// End of Modules
+
+
+/* Helper Section
+============================================= */
+
+// Nifty function that we will be using a few times
+String.prototype.replaceAll = function(str1, str2, ignore) {
+    var Regex = new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\&lt;\&gt;\-\&amp;])/g,"\\$&amp;"),(ignore?"gi":"g"));
+    return this.replace(Regex,(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
+
+var generatePath = function(year, stat, isTest) {
+    var e = '_REPLACE.csv',
+    b = (!isTest)?
+    './data/csv/REPLACE/leagues_NBA_' :
+    './data/testData/REPLACE/leagues_NBA_';
+
+    return String(b+year+e).replaceAll('REPLACE',stat);
+};
+
+var getHeader = function (path) {
+    var statObj = {
+        'totals': 'Rk,Player,Pos,Age,Tm,G,GS,MP,FG,FGA,FG%,3P,3PA,3P%,2P,2PA,2P%,eFG%,FT,FTA,FT%,ORB,DRB,TRB,AST,STL,BLK,TOV,PF,PTS',
+        'advanced': 'Rk,Player,Pos,Age,Tm,G,MP,PER,TS%,3PAr,FTr,ORB%,DRB%,TRB%,AST%,STL%,BLK%,TOV%,USG%,0,OWS,DWS,WS,WS/48,0,OBPM,DBPM,BPM,VORP'
+    };
+    return _.compact(_.map(statObj, function (val, key) {
+        // key = totals || advanced
+        // If key exist inside of path
+        if (path.indexOf(key) > -1) {
+            // Returns the value at statObj[statType]
+            return val;
+        }
+    }))[0];
+};
+
+// End of Helper
+
+
+/* Functions Section
+============================================= */
+
+/**
+*Function Name: cleanData
+*Parameters: array of file paths
+*RUN: node misc_NBA_Data.js =CLEAN
+*/
+var cleanData = function(paths) {
+
+    _a.each(paths, function(filePath, callback) {
+        // get data from file
+        fs.readFile(filePath, function(err, data) {
+            if(err) throw err;
+            var data_Str = data.toString();
+            // Remove double commas
+            data_Str = data_Str.replaceAll(',,',',0,');
+            var data_Arr = data_Str.split("\n");
+
+            // Check if first row is empty
+            if (!data_Arr[0].length) {
+                data_Arr.shift();
+            }
+
+            data_Arr = _.filter(data_Arr, function (_str) {
+                return (_str.indexOf('Rk,Player'));
+            });
+
+            var finalHeader = getHeader(filePath);
+            console.log(finalHeader);
+
+            data_Arr.unshift(finalHeader);
+            fs.writeFileSync(filePath, data_Arr.join('\n'));
+            callback();
+        });
+    },function (err) {
+        console.log('*****DONE CLEANING DATA*****');
+    });
+};
+
+
+
+/**
+*Function Name: buildData
+*Parameters: array of file paths
+*RUN: node misc_NBA_Data.js =BUILD
+*/
+var buildData = function(paths) {
+    _a.each(paths, function (path, _aCallback) {
+
+        // Create File Stream
+        var inputStream = fs.createReadStream(path);
+
+        // Read in CSV file
+        fast_csv.fromStream(inputStream,{
+            headers: true,
+            ignoreEmpty: true
+        })
+        .transform(function(data){
+            var parsedPath = path.match(/(advanced|totals)|(\d{4})/g);
+            data.statType = parsedPath[0];
+            data.Season = parsedPath[1];
+            return data;
+        })
+        .on("data", function(data){
+
+            var name = data.Player,
+                yr = data.Season,
+                stat = data.statType;
+
+            // Does Player exist?
+            if (!DB_OBJ.hasOwnProperty(name)) {
+                // Player doesn't exist
+
+                // helps us for the final data structure.
+                var tmpPlayer = {
+                    Player: name,
+                    Pos: data.Pos,
+                    Seasons: {}
+                };
+                DB_OBJ[name] = tmpPlayer;
+                DB_OBJ[name].Seasons[yr] = {};
+            } else if(!DB_OBJ[name].Seasons.hasOwnProperty(yr)) {
+                    // Player Exists, Season doesnt exist
+                    DB_OBJ[name].Seasons[yr] = {};
+            }
+            // add the stats to the player object.
+            DB_OBJ[name].Seasons[yr][stat] = {};
+            DB_OBJ[name].Seasons[yr][stat] = data;
+        })
+        .on("end", function(){
+            console.log("done");
+            _aCallback();
+        });
+
+    }, function (err) {
+        console.log('*****DONE BUILDING DATA*****');
+        jsonfile.writeFile('./data/outputFile.json', DB_OBJ, { spaces: 4}, function(err) {
+            console.error(err);
+        });
+    });
+};
+
+/**
+* Main Function
+*/
+(function (task, isTest) {
+
+    // Allowed Tasks
+    if (['=BUILD','=CLEAN'].indexOf(task) === -1) {
+        console.log('You did not pick an available task.');
+        return ;
+    }
+
+    // Type of stats
+    var STATS = ['totals', 'advanced'];
+
+    // If Test is set, only get a few years
+    var endYr = (isTest) ? 1990 : 2016;
+
+    // Get generate our list of file paths
+    var pathList = _.flatten(_.map(STATS, function (stat) {
+
+        return _.map(_.range(1981,endYr), function (year) {
+            var finalStr = generatePath(year,stat,isTest);
+            return finalStr;
+        });
+    }));
+
+    // Divider ===================================
+
+    // What task did user choose
+    if (task === '=BUILD') {
+        console.log('*****BUILDING DATA*****');
+        buildData(pathList);
+    }
+    else if(task === '=CLEAN'){
+        console.log('*****CLEANING DATA*****');
+        cleanData(pathList);
+    } else {
+        console.log('*scratching head* how you got here?');
+    }
+
+})(process.argv[2], process.argv[3]);</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <h2 class="heading multiColor" id="mongo">Mongo</h2>
+            <p>We're going to pretend that all of us know what issues are going to arise in the future from how our data is currently. For one, it's not even in the final structure that we wanted. I'm going to go ahead and list the issues that we have with our data:</p>
+            <ol>
+                <li>Not in final structure</li>
+                <li><code>*</code> at the end of names(HoF players)</li>
+                <li>All values are <code>strings</code>.</li>
+            </ol>
+            <p>The first is self-explanatory. The second one causes problems when we want to search up certain players in the database. The third, I didn't pay too much attention to it at first. Until I had to apply math in the Machine Learning portion of this project. I tried converting them to float while and Python. After 10 minutes of doing that, I figured it would be much easier for them to already be a float in the database.</p> <p>So for my final trick.</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/final_trick.gif" alt="final_trick">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Were gonna use <code>modules</code> that was inspired from reading <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html">Ben Cherry's amazing article on Javascript Modules</a>.</p>
+            <p>This module will have a few properties that will help keep our code together. The first <code>filter</code>, will take care of converting all our stats(strings) into floats and remove unwanted properties like <strong><em><code>Rk</code>, <code>0</code>, <code>matches</code></em></strong>. The next property, <code>clean</code>, will change our structure:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:230px">{
+    "&lt;PLAYER NAME&gt;": { // LeBron James
+        "Player" : "LeBron James",
+        "Pos" : "SF",
+        "&lt;SEASON YEAR&gt;" : { // 2007
+            "advanced": {
+                ... // Stats from advanced CSV
+            },
+            "totals": {
+                ... // Stats from totals CSV
+            },
+        }
+    }
+}</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>To the desired structure:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:350px">// Final Structure
+[
+    {
+        "Player" : "LeBron James",
+        "Pos" : "SF",
+        "Seasons" : [
+            {
+                "totals" : {
+                    ......
+                    ......
+                },
+                "advanced" : {
+                    ......
+                    ......
+                }
+            },
+            ......
+        ]
+    },
+    ....`
+]</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>So replace our <code>var DB_OBJ = {};</code> in our <code>Module Section</code> with:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:195px">var DB_OBJ = (function(data) {
+
+    data.clean = function() {
+
+    };
+
+    data.filter = function(obj, reg) {
+
+    };
+
+    return data;
+})({});</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>If you rarely work with modules, I recommend reading that article I mentioned above, even if you just need a quick refresher. The reason why we are making <code>DB_OBJ</code> a modules is so that we have all the data and data manipulation in one location. As of right now, we are filtering the data in the <code>.transform()</code> and we <strong>would</strong> be cleaning the data right before our <code>jsonfile.writeFile()</code> line.</p>
+            <p>Lets start off with <code>filter</code> since we have the majority of the code for it already.
+                We will be calling our filtering method in our <code>.transform()</code> method, replace <code>.transform()</code> with:
+            </p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:65px">.transform(function(data){
+    var regex = path.match(/(advanced|totals)|(\d{4})/g);
+    return DB_OBJ.filter(data, regex);
+})</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Since we do not have access to <code>path</code> in our data object, we won't be able to apply our regex in our filter property unless we pass it in as an argument. Lets hop back to our <code>data.filter</code>:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:230px">data.filter = function(obj, reg) {
+    obj.statType = reg[0];
+    obj.Season = reg[1];
+    obj.Player = obj.Player.replaceAll('*','');
+    delete obj["Rk"];
+    delete obj["0"];
+    return _.mapObject(obj, function (val, key) {
+
+        if (!isNaN(val)) {
+            val = +val;
+        }
+        return val;
+    });
+};</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Those first two lines seem familiar, what about the rest? The next three are pretty simple to explain. If the player has an <code>*</code> in his name, we remove it. The next two lines we <code>delete</code> the <code>rk</code> and <code>0</code> property. The last section may look a bit confusing, but its not. We are going through each property and checking if the string could be a number. This <a href="http://stackoverflow.com/a/175787/1973339">stack overflow answer</a> does a great job explaining it.</p>
+            <p>Lets run it and see if the stats are no longer strings and we've removed the <code>*</code> from <u><strong>Kareem Abdul-Jabbar</strong></u>:</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>Did your stats turn into numbers like mine? if not, its ok, a code checkup is very soon!:</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_05.png" alt="sublime_05.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Now let's get to cleaning. Some of you might have already figured out that we are going to print out those functions inside of <strong><u>outputFile.json</u></strong>(<strong>depending jsonfile version</strong>). Does that mean we're going to be printing those out to? We're going to <code>delete</code> them before it gets to that point, so make your <code>data.clean</code> look like this:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:165px">data.clean = function() {
+    delete data["clean"];
+    delete data["filter"];
+    // 1
+    return _.map(data, function (plyr) {
+        // 2
+        plyr.Seasons = _.values(plyr.Seasons);
+        return plyr;
+    });
+};</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 1</strong></u> - Since we are using the <code>_.map()</code> function, it's going to return all the values in our data object as an array, so we get rid of the "Player Name" property.</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:130px">[
+    {
+        "Player": "Kareem Abdul-Jabbar",
+        "Pos": "C",
+        ....
+    },
+    ....
+]</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p><u><strong>Part 2</strong></u> -If you remember correctly, our seasons aren't in the structure that we want, this is where we fix that issue. We set <code>Seasons</code> equal to the <code><a href="http://underscorejs.org/#values">_.values()</a></code> of itself. <code>_.values()</code> will return the data in an array format, which is what we want.</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:310px">[
+    {
+        "Player": "Kareem Abdul-Jabbar",
+        "Pos": "C",
+        "Seasons": [ // Heres the array that we wanted :)
+            {
+                "totals": {
+                    ......
+                },
+                "advanced": {
+                    ......
+                }
+            },
+            {...
+            }
+        ]
+    },
+    ....
+]</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Lets see, we just have to call <code>clean</code> now, go to the line where <code>jsonfile.writeFile()</code> is, and replace it with:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:65px">jsonfile.writeFile('./data/outputFile.json', DB_OBJ.clean(), { spaces: 4}, function(err) {
+    console.error(err);
+});
+</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Now lets run it! :)</p>
+            <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
+            <p>Did you get something like this:</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_06.png" alt="sublime_06.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Before we do a code checkup, let's minimize <strong><u>outputFile.json</u></strong>. This dramatically improves performance when uploading to MongoDB. Change <code>{spaces: 4}</code> to <code>{spaces: 0}</code> on the <code>jsonfile.writeFile()</code> line:</p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:20px">jsonfile.writeFile('./data/outputFile.json', DB_OBJ.clean(), { spaces: 0}, function(err) {</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Now lets run without <code>=TEST</code> set:</p>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p class="console">$ node buildNBA_Data.js =BUILD</p>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>Your <strong><u>outputFile.json</u></strong> should look like the following(<strong>it may take a bit to load</strong>):</p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/sublime_07.png" alt="sublime_07.png">
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <h3 class="heading multiColor" id="code-checkup_2">Code Checkup</h3>
+            <p><code>buildNBA_Data.js</code> with <code>{spaces: 4}</code></p>
+        </div>
+    </div>
+</section>
+<div class="codeView" style="height:500px">/* Modules Section
+============================================= */
+
+var _ = require("underscore");
+var fs = require('fs');
+var fast_csv = require("fast-csv");
+var _a = require("async");
+var jsonfile = require('jsonfile');
+var DB_OBJ = (function(data) {
+
+    data.clean = function() {
+        delete data["clean"];
+        delete data["filter"];
+        // 1
+        return _.map(data, function (plyr) {
+            // 2
+            plyr.Seasons = _.values(plyr.Seasons);
+            return plyr;
+        });
+    };
+
+    data.filter = function(obj, reg) {
+        obj.statType = reg[0];
+        obj.Season = reg[1];
+        obj.Player = obj.Player.replaceAll('*','');
+        delete obj["Rk"];
+        delete obj["0"];
+        return _.mapObject(obj, function (val, key) {
+
+            if (!isNaN(val)) {
+                val = +val;
+            }
+            return val;
+        });
+    };
+
+    return data;
+})({});
+// End of Modules
+
+
+/* Helper Section
+============================================= */
+
+// Nifty function that we will be using a few times
+String.prototype.replaceAll = function(str1, str2, ignore) {
+    var Regex = new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\&lt;\&gt;\-\&amp;])/g,"\\$&amp;"),(ignore?"gi":"g"));
+    return this.replace(Regex,(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+};
+
+var generatePath = function(year, stat, isTest) {
+    var e = '_REPLACE.csv',
+    b = (!isTest)?
+    './data/csv/REPLACE/leagues_NBA_' :
+    './data/testData/REPLACE/leagues_NBA_';
+
+    return String(b+year+e).replaceAll('REPLACE',stat);
+};
+
+var getHeader = function (path) {
+    var statObj = {
+        'totals': 'Rk,Player,Pos,Age,Tm,G,GS,MP,FG,FGA,FG%,3P,3PA,3P%,2P,2PA,2P%,eFG%,FT,FTA,FT%,ORB,DRB,TRB,AST,STL,BLK,TOV,PF,PTS',
+        'advanced': 'Rk,Player,Pos,Age,Tm,G,MP,PER,TS%,3PAr,FTr,ORB%,DRB%,TRB%,AST%,STL%,BLK%,TOV%,USG%,0,OWS,DWS,WS,WS/48,0,OBPM,DBPM,BPM,VORP'
+    };
+    return _.compact(_.map(statObj, function (val, key) {
+        // key = totals || advanced
+        // If key exist inside of path
+        if (path.indexOf(key) > -1) {
+            // Returns the value at statObj[statType]
+            return val;
+        }
+    }))[0];
+};
+
+// End of Helper
+
+
+/* Functions Section
+============================================= */
+
+/**
+*Function Name: cleanData
+*Parameters: array of file paths
+*RUN: node misc_NBA_Data.js =CLEAN
+*/
+var cleanData = function(paths) {
+
+    _a.each(paths, function(filePath, callback) {
+        // get data from file
+        fs.readFile(filePath, function(err, data) {
+            if(err) throw err;
+            var data_Str = data.toString();
+            // Remove double commas
+            data_Str = data_Str.replaceAll(',,',',0,');
+            var data_Arr = data_Str.split("\n");
+
+            // Check if first row is empty
+            if (!data_Arr[0].length) {
+                data_Arr.shift();
+            }
+
+            data_Arr = _.filter(data_Arr, function (_str) {
+                return (_str.indexOf('Rk,Player'));
+            });
+
+            var finalHeader = getHeader(filePath);
+            console.log(finalHeader);
+
+            data_Arr.unshift(finalHeader);
+            fs.writeFileSync(filePath, data_Arr.join('\n'));
+            callback();
+        });
+    },function (err) {
+        console.log('*****DONE CLEANING DATA*****');
+    });
+};
+
+
+
+/**
+*Function Name: buildData
+*Parameters: array of file paths
+*RUN: node misc_NBA_Data.js =BUILD
+*/
+var buildData = function(paths) {
+    _a.each(paths, function (path, _aCallback) {
+
+        // Create File Stream
+        var inputStream = fs.createReadStream(path);
+
+        // Read in CSV file
+        fast_csv.fromStream(inputStream,{
+            headers: true,
+            ignoreEmpty: true
+        })
+        .transform(function(data){
+            var regex = path.match(/(advanced|totals)|(\d{4})/g);
+            return DB_OBJ.filter(data, regex);
+        })
+        .on("data", function(data){
+
+            var name = data.Player,
+                yr = data.Season,
+                stat = data.statType;
+
+            // Does Player exist?
+            if (!DB_OBJ.hasOwnProperty(name)) {
+                // Player doesn't exist
+
+                // helps us for the final data structure.
+                var tmpPlayer = {
+                    Player: name,
+                    Pos: data.Pos,
+                    Seasons: {}
+                };
+                DB_OBJ[name] = tmpPlayer;
+                DB_OBJ[name].Seasons[yr] = {};
+            } else if(!DB_OBJ[name].Seasons.hasOwnProperty(yr)) {
+                    // Player Exists, Season doesnt exist
+                    DB_OBJ[name].Seasons[yr] = {};
+            }
+            // add the stats to the player object.
+            DB_OBJ[name].Seasons[yr][stat] = {};
+            DB_OBJ[name].Seasons[yr][stat] = data;
+        })
+        .on("end", function(){
+            console.log("done");
+            _aCallback();
+        });
+
+    }, function (err) {
+        console.log('*****DONE BUILDING DATA*****');
+        jsonfile.writeFile('./data/outputFile.json', DB_OBJ.clean(), { spaces: 4}, function(err) {
+            console.error(err);
+        });
+    });
+};
+
+/**
+* Main Function
+*/
+(function (task, isTest) {
+
+    // Allowed Tasks
+    if (['=BUILD','=CLEAN'].indexOf(task) === -1) {
+        console.log('You did not pick an available task.');
+        return ;
+    }
+
+    // Type of stats
+    var STATS = ['totals', 'advanced'];
+
+    // If Test is set, only get a few years
+    var endYr = (isTest) ? 1990 : 2016;
+
+    // Get generate our list of file paths
+    var pathList = _.flatten(_.map(STATS, function (stat) {
+
+        return _.map(_.range(1981,endYr), function (year) {
+            var finalStr = generatePath(year,stat,isTest);
+            return finalStr;
+        });
+    }));
+
+    // Divider ===================================
+
+    // What task did user choose
+    if (task === '=BUILD') {
+        console.log('*****BUILDING DATA*****');
+        buildData(pathList);
+    }
+    else if(task === '=CLEAN'){
+        console.log('*****CLEANING DATA*****');
+        cleanData(pathList);
+    } else {
+        console.log('*scratching head* how you got here?');
+    }
+
+})(process.argv[2], process.argv[3]);</div>
+<section class="container" ng-init="exper = 0">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <h3 class="heading multiColor" id="export-to-mongodb">Export to MongoDB!</h3>
+            <p>Depending on how much experience you have with MongoDB, this section will change. Choose one of the following:</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-2">
+            <a ng-click="exper = 1" class="btn btn-green waves-button waves-effect waves-light mongoBtn">Experienced with MongoDB</a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 ">
+            <a ng-click="exper = 2" class="btn btn-red waves-button waves-effect waves-light mongoBtn">MongoDB Noob</a>
+        </div>
+
+    </div>
+</section>
+<div ng-show="exper === 1">
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <p>Go ahead and Fire up mongo with <code>mongod</code> in a separate terminal. Then come back to your initial terminal and input the following:</p>
+            </div>
+        </div>
+    </section>
+    <p class="console">$ mongoimport --db NBA_Tutorial --collection players --file ./data/outputFile.json --jsonArray</p>
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <p>if you have your <strong><u>outputFile.json</u></strong> in a different directory, simply replace the above path with yours. This <a href="http://www.avilpage.com/2014/12/importing-exporting-json-data-to-mongodb.html">short article</a> clarified a lot of questions I had when using <code>mongoimport</code>.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div ng-show="exper === 2">
+    <section class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <p>We're just gonna set you up with a <a href="https://mongolab.com/signup/" title="MongoLab"><u><strong>FREE MongoLab account</strong></u></a>. Once you're signed in, you should be brought to a screen like this. Click the <strong>Create new</strong> button:</p>
+            </div>
+            <img class="tutImage" src="images/tutorialImages/mongolab_01.png" alt="mongolab_01">
+            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>For the free tier, select these options. Don't forget to put a database name at the bottom.</p></div>
+            <img class="tutImage" src="images/tutorialImages/mongolab_02.png" alt="mongolab_02">
+            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>We need to create a database user to access the data. <u>Do not forget your <strong>username</strong> and <strong>password</strong></u>, we're going to need it to upload our data.</p></div>
+            <img class="tutImage" src="images/tutorialImages/mongolab_03.png" alt="mongolab_03">
+            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p> on that same page, take note of your <u><strong>URI</strong></u>, we're going to be using it in the next step.</p></div>
+            <img class="tutImage" src="images/tutorialImages/mongolab_04.png" alt="mongolab_04">
+            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>In the root directory of this project, paste the following command with your credentials. Quick tips:</p> <p><var>-d = database</var>, <var>-c = collection</var>, <var>-u = username</var>, <var>-p = password</var>.</p></div>
+        </div>
+    </section>
+
+<p class="console">$ mongoimport -h <span style="color:red">&lt;URI&gt;</span> -d mongolab_nba -c players -u <span style="color:red">&lt;USERNAME&gt;</span> -p <span style="color:red">&lt;PASSWORD&gt;</span> --file ./data/outputFile.json --jsonArray</p>
+</div>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+             <p>I use <a href="http://robomongo.org/">Robomongo</a> to view my database. If you have trouble setting it up, follow this <a href="https://scotch.io/quick-tips/connecting-to-mongodb-using-robomongo#setting-up"> super fast scotch tutorial</a>.
+                    Your database should look like this:
+                </p>
+        </div>
+    </div>
+</section>
+<img class="tutImage" src="images/tutorialImages/robomongo_01.png" alt="robomongo_01.png">
+<!-- Final Gif -->
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p class="humorText"><u style="color:red"><strong>We're about to start our final chapter!</strong></u> I know you're excited, but I don't want people jumping off the stage yet!</p>
+            <img class="tutImage" class="tutImage" src="images/tutorialImages/stage_dive.gif" alt="stage_dive">
+
+        </div>
+    </div>
+     <div class="col-xs-12">
+        <h3 class="heading multiColor">
+        <a class="pull-right" ui-sref="blog.NBA_Machine_Learning_Tutorial4">
+            Chapter 4 <i class="fa fa-arrow-right"></i>
+        </a>
+        </h3>
+    </div>
+</section>

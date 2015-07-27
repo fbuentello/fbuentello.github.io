@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Fabians website</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
+
+    <link rel="stylesheet" href="styles/main.7064b540.css">
+  </head>
+  <body ng-app="websiteApp" ng-controller="mainController">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <header class="header multiBGColor">
+        <ul class="nav nav-list pull-left">
+            <li>
+                <a class="disabled">
+                    <span class="access-hide">Fabian Buentello</span>
+                    <span class="avatar avatar-sm"><img alt="alt text for Fabian Buentello avatar" src="images/users/edited_profile_phone_square.7ed3fe8b.jpg"></span>
+                    <span class="header-close icon icon-close"></span>
+                </a>
+            </li>
+        </ul>
+        <a class="header-logo" href="#/">Fabian Buentello</a>
+        <ul class="nav nav-list pull-left">
+            <li>
+                <a class="tileHeader navBarTile navBarTile" href="#/blog">Blog</a>
+            </li>
+        </ul>
+    </header>
+
+
+    <div ui-view class="main_uiView"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>fabian.buentello@gmail.com</p>
+        </div>
+    </footer>
+    <div class="fbtn-container" ng-init='isClicked = false'>
+        <div class="fbtn-inner" ng-class="{'openThis':isClicked}">
+            <a class="fbtn multiBGColor fbtn-lg" style="color:white;" ng-click="isClicked = !isClicked" data-toggle="dropdown">
+            <span class="fbtn-text">Links</span>
+            <span class="fbtn-ori icon icon-open-in-new"></span>
+            <span class="fbtn-sub icon icon-close"></span></a>
+            <div class="fbtn-dropdown">
+                <a class="fbtn" href="https://github.com/fbuentello" target="_blank">
+                <span class="fbtn-text">Follow me on github</span>
+                <span class="fa fa-github"></span></a>
+                <a class="fbtn fbtn-blue" href="https://twitter.com/initFabian" target="_blank">
+                <span class="fbtn-text">Follow Fabian on Twitter</span>
+                <span class="fa fa-twitter"></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div style="visibility:hidden">Icons made by <a href="http://www.flaticon.com/authors/icon-works" title="Icon Works">Icon Works</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <script src="scripts/vendor.c0c3a8ec.js"></script>
+
+        <script src="scripts/scripts.8d7cb228.js"></script>
+</body>
+</html>

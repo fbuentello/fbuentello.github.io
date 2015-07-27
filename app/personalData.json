@@ -1,0 +1,62 @@
+{
+  "personalInfo": {
+    "name": "Fabian Buentello",
+    "city": "Houston, TX",
+    "title": "Software Developer",
+    "personalText": "Ambitious developer passionate about creating Mobile and Web experiences for users. I enjoy working on projects that challenge me not only as a developer, but as a person as well. I find no pleasure in developing new technology using old languages. I am constantly pushing myself to learn new techniques to better myself as a developer."
+  },
+  "projHacks": [
+    {
+      "name": "CodeRED",
+      "desc": "Have the responsibility to build the Backend and Frontend for the organizers of the University of Houston's hackathon, CodeRED.",
+      "type": "project"
+    },
+    {
+      "name": "Vincent",
+      "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+      "type": "project"
+    },
+    {
+      "name": "NBA",
+      "desc": "'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+      "type": "hack"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Javascript(Frontend/Backend)",
+      "exp": "90%",
+      "langClass": "javascript",
+      "text": "<h2 class='heading multiColor tileHeader'> Back end </h2><h5 class='heading multiColor tileHeader'>Go to Frameworks</h5><ul><li>NodeJS</li><li>SailsJS</li></ul><p>With excitment surrounding io.js, I'm excited for Node's future. ps: I can build one mean <a class='multiColor' href='http://www.sitepoint.com/introduction-mean-stack/'>MEAN Stack</a> app ;). </p><h2 class='heading multiColor tileHeader'> Front end </h2><h5 class='heading multiColor tileHeader'>Go to Frameworks</h5><ul><li>AngularJS</li><li>EmberJS</li><li>The emphamis <a class='multiColor' href='http://tholman.com/elevator.js/'>ElevatorJS</a> :P</li></ul><p>With new frameworks coming out every 7th minute of every hour. It's not so much about what Javascript frameworks you know, but how fast can you adopt a new one.</p>"
+    },
+    {
+      "name": "Objective-C/Swift",
+      "exp": "95%",
+      "langClass": "iOS",
+      "text": "<h2 class='heading multiColor tileHeader'>[[Speak Brackets] toMe];</h2><h5 class='heading multiColor tileHeader'>Go to Frameworks</h5><ul><li><a class='multiColor' href='https://github.com/Mantle/Mantle'>Mantle</a></li><li><a class='multiColor' href='https://github.com/ReactiveCocoa/ReactiveCocoa'>ReactiveCocoa</a></li></ul><p> first and foremost, Objective-C is my first passion. I learned it before I learned any other programming language. I had no idea it was one of the more <a class='multiColor' href='https://youtu.be/73uu9YTq_1M'>difficult languages to learn</a>. I use this as motivation when I come across obstacles. Now with swift making its way in, programming for Apple devices has never been easier. </p>"
+    },
+    {
+      "name": "Hardware",
+      "exp": "85%",
+      "langClass": "htmlCSS",
+      "text": "<h2 class='heading multiColor tileHeader'>LESS SASS please!</h2> <h5 class='heading multiColor tileHeader'>Styling</h5> <p>Yes Bootstrap made working with CSS a whole lot easier. But using frameworks such as <a class='multiColor' href='http://lesscss.org/'>LESS</a> and <a class='multiColor' href='http://sass-lang.com/'>SASS</a> makes working with CSS downright simple.</p> <h2 class='heading multiColor tileHeader'> <small>&lt;!--[if lt IE 9]></small> Design me a website please <small>&lt;![endif]--></small></h2> <p>Building a website from the ground up just doesn't sound as appealing as it used to be. I enjoy using scaffolding tools such as <a class='multiColor' href='http://yeoman.io/' title='Yeoman'>Yeoman</a> and task automators like <a class='multiColor' href='http://gruntjs.com/' title='Grunt'>Grunt</a> to help make my life easier.</p>"
+    },
+    {
+      "name": "Machine Learning",
+      "exp": "35%",
+      "langClass": "machineLearning",
+      "text": "just started picking up machine learning, is by far some of the funniest, most exciting type of development I've done thus far."
+    }
+  ],
+  "blogs": {
+    "NBA_Machine_Learning_Tutorial" : {
+      "title": "Predict NBA Player's PER with Machine Learning",
+      "parts": [
+        "./files/NBA_ML_Chapter0.html",
+        "./files/NBA_ML_Chapter1.html",
+        "./files/NBA_ML_Chapter2.html",
+        "./files/NBA_ML_Chapter3.html"
+      ]
+    }
+  }
+}
