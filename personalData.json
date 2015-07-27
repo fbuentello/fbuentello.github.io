@@ -95,7 +95,7 @@
     },
     {
       "name": "HTML/CSS",
-      "exp": "85%",
+      "exp": "65%",
       "langClass": "htmlCSS",
       "text": "<h2 class='heading multiColor tileHeader'>LESS SASS please!</h2> <h5 class='heading multiColor tileHeader'>Styling</h5> <p>Yes Bootstrap made working with CSS a whole lot easier. But using frameworks such as <a class='multiColor' href='http://lesscss.org/'>LESS</a> and <a class='multiColor' href='http://sass-lang.com/'>SASS</a> makes working with CSS downright simple.</p> <h2 class='heading multiColor tileHeader'> <small>&lt;!--[if lt IE 9]></small> Design me a website please <small>&lt;![endif]--></small></h2> <p>Building a website from the ground up just doesn't sound as appealing as it used to be. I enjoy using scaffolding tools such as <a class='multiColor' href='http://yeoman.io/' title='Yeoman'>Yeoman</a> and task automators like <a class='multiColor' href='http://gruntjs.com/' title='Grunt'>Grunt</a> to help make my life easier.</p>"
     }

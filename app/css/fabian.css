@@ -1,6 +1,16 @@
+html,
+body {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 24px;
+  margin: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
 .disabled {
   pointer-events: none;
   cursor: default;
+}
+.heading {
+  font-weight: 300;
 }
 .header.fixed,
 .header.open,
@@ -26,6 +36,12 @@
   background-size: cover;
   padding: 90px 0 70px 0;
   text-align: center;
+}
+.main_uiView {
+  padding: 45px 0px 100px 0px;
+}
+.card-img-heading {
+  background-image: linear-gradient(to bottom, transparent, #000000);
 }
 .language .tile {
   background-color: #e2e2e2;
@@ -54,16 +70,16 @@
 }
 .language .tile .htmlCSS {
   background-color: #f16529;
-  width: 85%;
+  width: 65%;
 }
 .language .tile .htmlCSS a {
   color: #f16529;
 }
-.language .tile .rubyOnRails {
+.language .tile .machineLearning {
   background-color: #a62c39;
-  width: 67%;
+  width: 37%;
 }
-.language .tile .rubyOnRails a {
+.language .tile .machineLearning a {
   color: #a62c39;
 }
 .language .tile .php {
@@ -78,4 +94,111 @@
 }
 .tileHeader {
   font-weight: 300;
+}
+/*
+   Tutorial classes
+   ========================================================================== */
+.titleDate h1 {
+  margin-bottom: 5px;
+}
+.titleDate h5 {
+  margin-top: 5px;
+}
+.tutImage {
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+  max-width: 600px;
+}
+.margin10 {
+  margin: 10px 0px;
+}
+.margin20 {
+  margin: 20px 0px;
+}
+.humorText {
+  font-size: 26px;
+  line-height: 28px;
+  color: #121212;
+  padding: 0 0 8px 0;
+  margin: 0;
+  text-align: center;
+}
+.nextButton {
+  font-weight: 300;
+  text-decoration: none;
+}
+.directorySection p {
+  margin: 0px;
+}
+.directorySection p .tabOver {
+  text-indent: 1em;
+}
+.directorySection p .tabOver2 {
+  text-indent: 2em;
+}
+.directorySection p .tabOver3 {
+  text-indent: 3em;
+}
+.directorySection .feats {
+  text-indent: 1em;
+  color: #969696;
+}
+.console {
+  font-family: Courier;
+  color: #CCCCCC;
+  background: #2d2d2d;
+  padding: 10px;
+  -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+.tabOver {
+  text-indent: 1em;
+}
+.ace_editor {
+  height: 300px;
+  line-height: 15px;
+  max-width: 900px;
+  margin: auto;
+  -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+.partDesc {
+  font-size: 20px;
+}
+kbd {
+  background-color: #2d2d2d;
+}
+.mongoBtn {
+  padding: 33px 0px !important;
+  height: 100px;
+  width: 100%;
+  -webkit-box-shadow: none;
+}
+/* Small devices (tablets,  and up) */
+@media (min-width: 768px) {
+  .tutImage {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    max-width: 700px;
+  }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .tutImage {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    max-width: 800px;
+  }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .tutImage {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    max-width: 900px;
+  }
 }

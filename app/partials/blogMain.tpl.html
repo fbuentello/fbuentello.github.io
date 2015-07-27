@@ -1,0 +1,48 @@
+<!-- LANGUAGES -->
+
+
+<div autoscroll="true" class="content">
+	<div class="content-heading">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-push-3 col-sm-10 col-sm-push-1">
+					<h1 class="heading" style="height: 48px"></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content-inner">
+
+			<div autoscroll="true" ui-view class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style="padding-top:20px;margin-bottom:100px;">
+
+				<h1 class="heading text-center multiColor" style="font-weight:300">Blog</h1>
+				<div class="row">
+
+					<h2 class="content-sub-heading multiColor">Blog/Tutorials</h2>
+
+					<div class="col-xs-4" ng-repeat="(blogId, obj) in blogs">
+
+						<div class="card">
+							<div class="card-main">
+								<div class="card-img">
+									<img alt="alt text" src="images/samples/nba-logo-vector-png.png">
+									<p class="card-img-heading">{{obj.title}}</p>
+								</div>
+								<div class="card-action">
+									<ul class="nav nav-list pull-left">
+										<li>
+											<a data-toggle="collapse" ui-sref="blog.NBA_Machine_Learning_Tutorial"><span class="collapsed-hide">Read</span></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- BLOG -->
+	</div>
+</div>
+
+

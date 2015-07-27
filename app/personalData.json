@@ -7,39 +7,19 @@
   },
   "projHacks": [
     {
-      "name": "NR-Injector",
+      "name": "CodeRED",
+      "desc": "Have the responsibility to build the Backend and Frontend for the organizers of the University of Houston's hackathon, CodeRED.",
+      "type": "project"
+    },
+    {
+      "name": "Vincent",
       "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
       "type": "project"
     },
     {
-      "name": "CodeRED WebApp",
-      "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-      "type": "project"
-    },
-    {
-      "name": "Morning Hack",
+      "name": "NBA",
       "desc": "'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
       "type": "hack"
-    },
-    {
-      "name": "The Other Guys",
-      "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-      "type": "project"
-    },
-    {
-      "name": "Mood Swing",
-      "desc": "'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-      "type": "hack"
-    },
-    {
-      "name": "Siddy Talk",
-      "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-      "type": "project"
-    },
-    {
-      "name": "Mioty",
-      "desc": "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
-      "type": "project"
     }
   ],
   "languages": [
@@ -56,16 +36,27 @@
       "text": "<h2 class='heading multiColor tileHeader'>[[Speak Brackets] toMe];</h2><h5 class='heading multiColor tileHeader'>Go to Frameworks</h5><ul><li><a class='multiColor' href='https://github.com/Mantle/Mantle'>Mantle</a></li><li><a class='multiColor' href='https://github.com/ReactiveCocoa/ReactiveCocoa'>ReactiveCocoa</a></li></ul><p> first and foremost, Objective-C is my first passion. I learned it before I learned any other programming language. I had no idea it was one of the more <a class='multiColor' href='https://youtu.be/73uu9YTq_1M'>difficult languages to learn</a>. I use this as motivation when I come across obstacles. Now with swift making its way in, programming for Apple devices has never been easier. </p>"
     },
     {
-      "name": "Android",
-      "exp": "50%",
-      "langClass": "android",
-      "text": "<h2 class='heading multiColor tileHeader'>Confessions of a Java Head</h2><p> Been doing Android for about 2 years. Have built prototype POS system for dry cleaners to a mobile Injector for the <a class ='aTagInsideLanguage' href='http://nodered.org/'>Node-RED Project</a>. I would be lying if I said I do enough Android projects, just being honest. Feel free to drop a few project suggestions :)</p>"
-    },
-    {
-      "name": "HTML/CSS",
+      "name": "Hardware",
       "exp": "85%",
       "langClass": "htmlCSS",
       "text": "<h2 class='heading multiColor tileHeader'>LESS SASS please!</h2> <h5 class='heading multiColor tileHeader'>Styling</h5> <p>Yes Bootstrap made working with CSS a whole lot easier. But using frameworks such as <a class='multiColor' href='http://lesscss.org/'>LESS</a> and <a class='multiColor' href='http://sass-lang.com/'>SASS</a> makes working with CSS downright simple.</p> <h2 class='heading multiColor tileHeader'> <small>&lt;!--[if lt IE 9]></small> Design me a website please <small>&lt;![endif]--></small></h2> <p>Building a website from the ground up just doesn't sound as appealing as it used to be. I enjoy using scaffolding tools such as <a class='multiColor' href='http://yeoman.io/' title='Yeoman'>Yeoman</a> and task automators like <a class='multiColor' href='http://gruntjs.com/' title='Grunt'>Grunt</a> to help make my life easier.</p>"
+    },
+    {
+      "name": "Machine Learning",
+      "exp": "35%",
+      "langClass": "machineLearning",
+      "text": "just started picking up machine learning, is by far some of the funniest, most exciting type of development I've done thus far."
     }
-  ]
+  ],
+  "blogs": {
+    "NBA_Machine_Learning_Tutorial" : {
+      "title": "Predict NBA Player's PER with Machine Learning",
+      "parts": [
+        "./files/NBA_ML_Chapter0.html",
+        "./files/NBA_ML_Chapter1.html",
+        "./files/NBA_ML_Chapter2.html",
+        "./files/NBA_ML_Chapter3.html"
+      ]
+    }
+  }
 }

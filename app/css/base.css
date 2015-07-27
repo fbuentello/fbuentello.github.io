@@ -11176,7 +11176,7 @@ input[type="checkbox"]:checked + .switch-toggle:after, input[type="radio"]:check
   -webkit-transition-property: box-shadow, -webkit-transform;
   transition-property: box-shadow, transform;
 }
-.menu.open {
+.menu.openSB {
   left: 0;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -11185,7 +11185,7 @@ input[type="checkbox"]:checked + .switch-toggle:after, input[type="radio"]:check
 }
 @media only screen and (min-width: 480px) {
   .menu {
-    left: -320px;
+    /*left: -320px;*/
     width: 320px;
   }
 }
@@ -11222,7 +11222,7 @@ input[type="checkbox"]:checked + .switch-toggle:after, input[type="radio"]:check
   -webkit-transition: height 0s 0.3s, opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0s 0.3s, z-index 0s 0.3s;
   transition: height 0s 0.3s, opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0s 0.3s, z-index 0s 0.3s;
 }
-.nav-drawer.open ~ .menu-backdrop, .touch .menu.open ~ .menu-backdrop {
+.nav-drawer.open ~ .menu-backdrop, .touch .menu.openSB ~ .menu-backdrop {
   height: 100%;
   width: 100%;
   opacity: 0.5;

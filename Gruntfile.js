@@ -4,7 +4,11 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	var watchFiles = {
-		viewFiles: ['app/index.html'],
+		viewFiles: [
+				'app/index.html',
+				'app/partials/**/*.tpl.html',
+				'app/files/*.html',
+				],
 		lessFiles: ['app/less/**/*.less'],
 		cssFiles: ['app/css/**/*.css'],
 		jsFiles: ['app/js/**/*.js'],
@@ -28,7 +32,8 @@ module.exports = function(grunt) {
 			options: {
 				port: 9000,
 				livereload: 35729,
-				hostname: 'localhost'
+				// set to 0.0.0.0 to be accessable to network, else localhost
+				hostname: '0.0.0.0'
 			},
 			livereload: {
 				options: {
