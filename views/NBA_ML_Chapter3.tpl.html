@@ -46,7 +46,7 @@
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <p>Next, let's jump inside of our <code>.on("data")</code> method inside of <code>buildData()</code>. Around this time of development I was using a debugger like <a href="https://github.com/node-inspector/node-inspector" title="node-inspector">node-inspector</a>. It'll be too much of a hassle to bring the <code>debugging</code> aspect into this tutorial. So I'm just going to show you how the data looks like at this point of the program.</p>
+            <p>Next, jump inside of our <code>.on("data")</code> method inside of <code>buildData()</code>. Around this time of development I was using a debugger like <a href="https://github.com/node-inspector/node-inspector" title="node-inspector">node-inspector</a>. It'll be too much of a hassle to bring the <code>debugging</code> aspect into this tutorial. So I'm just going to show you how the data looks like at this point of the program.</p>
         </div>
     </div>
 </section>
@@ -377,7 +377,7 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <p>OK let's remove our <code>console.log(DB_OBJ)</code> and let's add a few more years to our <code>=TEST</code>. Inside of your <code>Main Function</code> change <var><code>endYr</code></var> from <code>1982</code> to <code>1983</code>:</p>
+            <p>OK let's remove our <code>console.log(DB_OBJ)</code> add a few more years to our <code>=TEST</code>. Inside of your <code>Main Function</code> change <var><code>endYr</code></var> from <code>1982</code> to <code>1983</code>:</p>
         </div>
     </div>
 </section>
@@ -413,7 +413,7 @@ var endYr = (isTest) ? 1990 : 2016;</div>
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>And now lets <u><strong><code>=CLEAN TEST</code></strong></u> our data one more time:</p>
             <p class="console">$ node buildNBA_Data.js =CLEAN TEST</p>
-            <p>Lets try building it again:</p>
+            <p>Let's try building it again:</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>Hopefully your <strong><u>outputFile.json</u></strong> looks like this:</p>
         </div>
@@ -630,7 +630,7 @@ var buildData = function(paths) {
                 <li><code>*</code> at the end of names(HoF players)</li>
                 <li>All values are <code>strings</code>.</li>
             </ol>
-            <p>The first is self-explanatory. The second one causes problems when we want to search up certain players in the database. The third, I didn't pay too much attention to it at first. Until I had to apply math in the Machine Learning portion of this project. I tried converting them to float while and Python. After 10 minutes of doing that, I figured it would be much easier for them to already be a float in the database.</p> <p>So for my final trick.</p>
+            <p>The first is self-explanatory. The second one causes problems when we want to search up certain players in the database. The third, I didn't pay too much attention to it at first... Until I had to apply math in the Machine Learning portion of this project. I tried converting them to floats while in Python. After 10 minutes of doing that, I figured it would be much easier for them to already be a float in the database.</p> <p>So for my final trick.</p>
         </div>
     </div>
 </section>
@@ -638,7 +638,7 @@ var buildData = function(paths) {
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <p>Were gonna use <code>modules</code> that was inspired from reading <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html">Ben Cherry's amazing article on Javascript Modules</a>.</p>
+            <p>We're gonna use <code>modules</code> that were inspired from reading <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html">Ben Cherry's amazing article on Javascript Modules</a>.</p>
             <p>This module will have a few properties that will help keep our code together. The first <code>filter</code>, will take care of converting all our stats(strings) into floats and remove unwanted properties like <strong><em><code>Rk</code>, <code>0</code>, <code>matches</code></em></strong>. The next property, <code>clean</code>, will change our structure:</p>
         </div>
     </div>
