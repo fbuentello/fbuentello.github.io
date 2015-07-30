@@ -135,7 +135,7 @@ var cleanData = function(paths) {
 *RUN: node misc_NBA_Data.js =BUILD
 */
 var buildData = function(paths) {
-	_a.each(paths, function (path, _aCallback) {
+	async.each(paths, function (path, _aCallback) {
 
 		// Create File Stream
 		var inputStream = fs.createReadStream(path);
@@ -224,7 +224,7 @@ var buildData = function(paths) {
 <div class="codeView" style="height:280px">var cleanData = function(paths) {
 
 	// 1
-	_a.each(paths, function(filePath, callback) {
+	async.each(paths, function(filePath, callback) {
 		// 2
 		fs.readFile(filePath, function(err, data) {
 			if(err) throw err;
@@ -512,7 +512,7 @@ if (test3) {
 
 <div class="codeView" style="height:500px">var cleanData = function(paths) {
 
-	_a.each(paths, function(filePath, callback) {
+	async.each(paths, function(filePath, callback) {
 		// get data from file
 		fs.readFile(filePath, function(err, data) {
 			if(err) throw err;
@@ -660,7 +660,7 @@ fs.writeFileSync(filePath, data_Arr.join('\n'));</div>
 var _ = require("underscore");
 var fs = require('fs');
 var fast_csv = require("fast-csv");
-var _a = require("async");
+var async = require("async");
 
 // End of Modules
 
@@ -711,7 +711,7 @@ var getHeader = function (path) {
 */
 var cleanData = function(paths) {
 
-	_a.each(paths, function(filePath, callback) {
+	async.each(paths, function(filePath, callback) {
 		// get data from file
 		fs.readFile(filePath, function(err, data) {
 			if(err) throw err;
@@ -749,7 +749,7 @@ var cleanData = function(paths) {
 *RUN: node misc_NBA_Data.js =BUILD
 */
 var buildData = function(paths) {
-	_a.each(paths, function (path, _aCallback) {
+	async.each(paths, function (path, _aCallback) {
 
 		// Create File Stream
 		var inputStream = fs.createReadStream(path);

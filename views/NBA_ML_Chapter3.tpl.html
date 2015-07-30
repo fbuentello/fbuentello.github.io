@@ -291,7 +291,7 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <p>and replace <code>_a.each()</code> callback to this:</p>
+            <p>and replace <code>async.each()</code> callback to this:</p>
         </div>
     </div>
 </section>
@@ -309,7 +309,7 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
     </div>
 </section>
 <div class="codeView" style="height:500px">var buildData = function(paths) {
-    _a.each(paths, function (path, _aCallback) {
+    async.each(paths, function (path, _aCallback) {
 
         // Create File Stream
         var inputStream = fs.createReadStream(path);
@@ -434,7 +434,7 @@ var endYr = (isTest) ? 1990 : 2016;</div>
 var _ = require("underscore");
 var fs = require('fs');
 var fast_csv = require("fast-csv");
-var _a = require("async");
+var async = require("async");
 var jsonfile = require('jsonfile');
 var DB_OBJ = {};
 // End of Modules
@@ -486,7 +486,7 @@ var getHeader = function (path) {
 */
 var cleanData = function(paths) {
 
-    _a.each(paths, function(filePath, callback) {
+    async.each(paths, function(filePath, callback) {
         // get data from file
         fs.readFile(filePath, function(err, data) {
             if(err) throw err;
@@ -524,7 +524,7 @@ var cleanData = function(paths) {
 *RUN: node misc_NBA_Data.js =BUILD
 */
 var buildData = function(paths) {
-    _a.each(paths, function (path, _aCallback) {
+    async.each(paths, function (path, _aCallback) {
 
         // Create File Stream
         var inputStream = fs.createReadStream(path);
@@ -873,7 +873,7 @@ var buildData = function(paths) {
 var _ = require("underscore");
 var fs = require('fs');
 var fast_csv = require("fast-csv");
-var _a = require("async");
+var async = require("async");
 var jsonfile = require('jsonfile');
 var DB_OBJ = (function(data) {
 
@@ -954,7 +954,7 @@ var getHeader = function (path) {
 */
 var cleanData = function(paths) {
 
-    _a.each(paths, function(filePath, callback) {
+    async.each(paths, function(filePath, callback) {
         // get data from file
         fs.readFile(filePath, function(err, data) {
             if(err) throw err;
@@ -992,7 +992,7 @@ var cleanData = function(paths) {
 *RUN: node misc_NBA_Data.js =BUILD
 */
 var buildData = function(paths) {
-    _a.each(paths, function (path, _aCallback) {
+    async.each(paths, function (path, _aCallback) {
 
         // Create File Stream
         var inputStream = fs.createReadStream(path);

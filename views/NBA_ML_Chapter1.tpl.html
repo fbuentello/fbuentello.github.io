@@ -199,7 +199,7 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 
 <div class="codeView" style="height:53px">var fs = require('fs');
 var fast_csv = require("fast-csv");
-var _a = require("async");</div>
+var async = require("async");</div>
 
 <section class="container">
 	<div class="row">
@@ -213,7 +213,7 @@ var _a = require("async");</div>
 </section>
 
 
-<div class="codeView" style="height:195px">_a.each(pathList, function (path, _aCallback) {
+<div class="codeView" style="height:195px">async.each(pathList, function (path, _aCallback) {
 
 	// Create File Stream
 
