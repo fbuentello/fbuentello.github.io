@@ -308,32 +308,6 @@ var async = require("async");
 ============================================= */
 
 /**
-- Main Function
-*/
-(function () {
-	// Type of stats
-	var STATS = ['totals', 'advanced'];
-
-	// 1.A
-	var pathList = _.map(STATS, function (stat) {
-
-		// 1.B
-		return _.map(_.range(1981,2016), function (year) {
-			// 1.C
-			var finalStr = ['./data/csv/',stat,'/leagues_NBA_',
-							year,'_',stat,'.csv'].join('');
-
-			return finalStr;
-		});
-	});
-
-	// 2
-	_.flatten(pathList).forEach(function (path) {
-		console.log(path);
-	});
-})();
-
-/**
 * Main Function
 */
 (function () {
