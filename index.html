@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" ng-app="websiteApp" ng-controller="mainController">
   <head>
     <meta charset="utf-8">
     <meta property="og:image" content="/images/users/fabian-animated-face-1000.6ee50ded.png" />
-    <title>Fabians website</title>
+    <meta property="og:image" content="images/tutorialImages/nba-logo-vector-fb.ab91818a.png" />
+    <title>{{ Page.title() }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="styles/main.b191f686.css">
   </head>
-  <body ng-app="websiteApp" ng-controller="mainController">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -23,7 +23,7 @@
             <li>
                 <a class="disabled">
                     <span class="access-hide">Fabian Buentello</span>
-                    <span class="avatar avatar-sm"><img alt="alt text for Fabian Buentello avatar" src="images/users/edited_profile_phone_square.7ed3fe8b.jpg"></span>
+                    <span class="avatar avatar-sm" style="background-color: transparent;"><img alt="alt text for Fabian Buentello avatar" src="images/users/fabian-animated-face-1000.6ee50ded.png"></span>
                     <span class="header-close icon icon-close"></span>
                 </a>
             </li>
@@ -75,6 +75,6 @@
 
     <script src="scripts/vendor.c0c3a8ec.js"></script>
 
-        <script src="scripts/scripts.8d7cb228.js"></script>
+        <script src="scripts/scripts.170adad0.js"></script>
 </body>
 </html>
