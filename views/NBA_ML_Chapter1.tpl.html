@@ -11,7 +11,7 @@
 
 			<p class="console">$ cd NBA-Machine-Learning-Tutorial/</p>
 			<p>Now let's start from the beginning:</p>
-			<p class="console">$ git checkout Clean</p>
+			<p class="console">$ git checkout startChapter1</p>
 
 			<div class="directorySection">
 				<p>Your directory should look like this:</p>
@@ -29,7 +29,7 @@
 		</p>
 		<h3 class="heading multiColor" id="lets-get-started">Let's get started</h3>
 		<p>OK so if you have no idea what the PER score is used for, let me explain. <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating">PER(Player Efficiency Rating)</a>, developed by John Hollinger, is a number used by the NBA to rate a player's performance throughout the season. There are a few issues with using this rating system as the <b>be–all and end–all solution</b>, mostly due to defensive stats. But we're not here to discuss that. If you scroll down to the <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating#Calculation">bottom of the wiki page</a>, you'll see Hollinger's original formula. Don't worry, we're not going to touch on that at all, actually we're really not going do much math.</p>
-		<p>The first step with machine learning, is to gather all your data. Luckily for us, <a href="http://www.basketball-reference.com/" title="Basketball-Reference">Basketball-Reference</a> granted me permission to make a portion of their data available for you(in repository). So we know what we want to predict, the PER stat. Now it's just a matter of knowing what Features(stats) we are going to use as input. Fortunately for us, Zach Fien's article <i><a href="http://bleacherreport.com/articles/113144-cracking-the-code-how-to-calculate-hollingers-per-without-all-the-mess">Cracking the Code: How to Calculate Hollinger's PER Without All the Mess</a></i> did a great job in doing just that. In Zach's article, he explains how he used the stats below to predict a player's PER without having to use Hollinger's forumla.</p>
+		<p>The first step with machine learning is to gather all your data. Luckily for us, <a href="http://www.basketball-reference.com/" title="Basketball-Reference">Basketball-Reference</a> granted me permission to make a portion of their data available for you(in repository). So we know what we want to predict, the PER stat. Now it's just a matter of knowing what Features(stats) we are going to use as input. Fortunately for us, Zach Fien's article <i><a href="http://bleacherreport.com/articles/113144-cracking-the-code-how-to-calculate-hollingers-per-without-all-the-mess">Cracking the Code: How to Calculate Hollinger's PER Without All the Mess</a></i> did a great job in doing just that. In Zach's article, he explains how he used the stats below to calculate a player's PER without having to use Hollinger's formula. Of course Zach's formula is off by a bit since he is not using Hollinger's formula, but it's close enough for us.</p>
 
 		<div class="directorySection margin10">
 			<p><b>Features(Input):</b></p>
@@ -60,7 +60,7 @@
 			<li>I think even numbers are sexy, and 1979 is not a sexy number. So we're going to be using all the seasons between the years 1980-2015. </li>
 		</ol>
 		<h3 class="heading multiColor" id="time-to-code">Time to Code</h3>
-		<p> I want to mention that I split up this file into three sections, <kbd>Module Section</kbd> <kbd>Helper Section</kbd> and <kbd>Function Section</kbd> just to help keep things organized. OK Fabian shut up, and let's get to coding. Remember to install all your NodeJS modules </p>
+		<p> I want to mention that I split up this file into three sections, <kbd>Module Section</kbd> <kbd>Helper Section</kbd> and <kbd>Function Section</kbd> just to help keep things organized. OK, Fabian shut up and let's get to coding. Remember to install all your NodeJS modules </p>
 		<p class="console">$ npm install</p>
 
 		<h2 class="heading multiColor" id="generate-file-paths">Generate file paths</h2>
@@ -83,12 +83,6 @@ var _ = require("underscore");
 /* Helper Section
 ============================================= */
 
-// Nifty function that we will be using a few times
-String.prototype.replaceAll = function(str1, str2, ignore) {
-	var Regex = new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\&lt;\&gt;\-\&amp;])/g,"\\$&amp;"),(ignore?"gi":"g"));
-	return this.replace(Regex,(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-};
-
 // End of Helper
 
 /* Functions
@@ -107,9 +101,8 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 		// 1.B
 		return _.map(_.range(1981,2016), function (year) {
 			// 1.C
-			var b = './data/csv/REPLACE/leagues_NBA_',
-			e = '_REPLACE.csv',
-			finalStr = String(b+year+e).replaceAll('REPLACE',stat);
+			var finalStr = ['./data/csv/',stat,'/leagues_NBA_',
+							year,'_',stat,'.csv'].join('');
 
 			return finalStr;
 		});
@@ -121,28 +114,23 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 	});
 })();</div>
 
-
-
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p><strong>Main Function</strong>
-				- If this is your first time seeing a self-executing anonymous function, check out <a href="http://esbueno.noahstokes.com/post/77292606977/self-executing-anonymous-functions-or-how-to-write">this article</a>.  Anonymous functions are great way to start off your program, plus they're sexy.
+				- If this is your first time seeing a self-executing anonymous function, check out <a href="http://esbueno.noahstokes.com/post/77292606977/self-executing-anonymous-functions-or-how-to-write">this article</a>. Anonymous functions are a great way to start off your program, plus they're sexy.
 			</p>
 
 			<u><p class="partDesc"><strong>Part 1</strong></p></u>
 
-			<!-- A -->
-			<p class="tabOver"><strong>A</strong> -  if you have never seen this <code><a href="http://underscorejs.org/#map">_.map()</a></code> function it's OK. It's a method from the <code>underscoreJS</code> module that we imported above. It is essentially a <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">forEach()</a></code> statement like  you would use on an array.  The main difference being, the <code>_.map()</code> function returns data unlike the <code>forEach()</code> method. If you have never used <a href="http://underscorejs.org/">underscoreJS</a> before, I highly recommend you start. I regret not using it sooner.</p>
+			<p class="tabOver"><strong>A</strong> -  if you have never seen this <code><a href="http://underscorejs.org/#map">_.map()</a></code> function it's OK. It's a method from the <code>underscoreJS</code> module that we imported above. It is essentially a <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">forEach()</a></code> statement like  you would use on an array.  The main difference being, the <code>_.map()</code> function returns data, unlike the <code>forEach()</code> method. If you have never used <a href="http://underscorejs.org/">underscoreJS</a> before, I highly recommend you start. I regret not using it sooner.</p>
 
-			<!-- B -->
-			<p class="tabOver"><strong>B</strong> - I know what you're thinking, <strong><em>"Fabian you don't have to explain the <code>_.map()</code> function again, I understand it!"</em></strong> I know you understand it Jimmy(I'm going call you that). Look inside of that map function, you'll see a new function called <code><a href="http://underscorejs.org/#range">_.range()</a></code>. This function let's you create an array, without having to create an array. Inside of it you have a START number and you increment by one all the way to [but not including] the END number. </p>
+			<p class="tabOver"><strong>B</strong> - I know what you're thinking, <strong><em>"Fabian you don't have to explain the <code>_.map()</code> function again, I understand it!"</em></strong> I know you understand it Jimmy(I'm going call you that). Look inside of that map function, you'll see a new function called <code><a href="http://underscorejs.org/#range">_.range()</a></code>. This function lets you create an array, without having to create an array. Inside of <code>_.range()</code> you have a START number and you increment by one all the way to [but not including] the END number. </p>
 
-			<!-- C -->
-			<p class="tabOver"><strong>C</strong> - This part is pretty simple to explain. What we're doing is, for each <code><var>year</var></code> we want to create a string called <code><var>finalStr</var></code> that is the combination of variable <code><var>b</var></code>, <code><var>year</var></code>, and <code><var>e</var></code>. Then we apply our little helper method <code>replaceAll()</code> to replace all the instances of the word <code>REPLACE</code> with our <code><var>stat</var></code> variable.</p>
+			<p class="tabOver"><strong>C</strong> - This part is pretty simple to explain. What we're doing is, for each <code><var>year</var></code> we join an array of strings using the <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join" title="join()">join()</a></code> method. Then we set it equal to a variable <code><var>finalStr</var></code>, for which we return.</p>
+
 			<p><strong><code><var>pathList</var></code></strong> - so once we finish our little mini <strong><em>"callback from hell"</em></strong> we'll end up with an array of two arrays. The first array being all the paths for our totals stats. The second array being all the paths to our advanced stats. </p>
 
-			<!-- 2 -->
 			<u><p class="partDesc"><strong>Part 2</strong></u></p>
 			<p> - I know you see that little  <code>_</code>, can you guess what <code><a href="http://underscorejs.org/#flatten">_.flatten()</a></code> does? If you guessed <strong><em>"Can Fabian stop with the damn questions..."</em></strong>, You guessed wrong. <code>_.flatten()</code> is going to turn our array of arrays(<code><var>pathList</var></code>) into one big array.</p>
 			<p>Run the code with: </p>
@@ -158,7 +146,7 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-			<p>So now that we have all our paths in our <code><var>pathList</var></code>, we now have to read the files. But before we get to that, something in our code isn't very sexy. Let's combine <strong>Part 1</strong> and <strong>Part 2</strong>, so that our <code>Main Function</code> looks like this:
+			<p>So now that we have all our paths in our <code><var>pathList</var></code>, we now have to read the files. But before we get to that, something in our code isn't very sexy. Let's combine <strong>Part 1</strong> and <strong>Part 2</strong> so that our <code>Main Function</code> looks like this:
 			</p>
 		</div>
 	</div>
@@ -177,9 +165,9 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 	var pathList = _.flatten(_.map(STATS, function (stat) {
 
 		return _.map(_.range(1981,2016), function (year) {
-			var b = './data/csv/REPLACE/leagues_NBA_',
-			e = '_REPLACE.csv',
-			finalStr = String(b+year+e).replaceAll('REPLACE',stat);
+			var finalStr = ['./data/csv/',stat,'/leagues_NBA_',
+							year,'_',stat,'.csv'].join('');
+
 			return finalStr;
 		});
 	}));
@@ -204,7 +192,7 @@ var async = require("async");</div>
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-			<p>We are going to be using our <code>fast_csv</code> variable to read in the CSV files.
+			<p>We are going to be using our <code><a href="https://github.com/C2FO/fast-csv" title="fast_csv">fast_csv</a></code> variable to read in the CSV files.
 				<code>fast_csv</code> will use the <code>fs</code>(file system) module which is built into NodeJS. We are going to be using the <code><a href="https://github.com/caolan/async" title="async">async</a></code> module to make sure everything happens in order. That's very important when messing with files. Just like <code>underscoreJS</code>, I wish I would have used <code>async</code> much sooner.
 			</p>
 			<p>Next, let's move to the bottom of our <code>Main Function</code> after our <code>// Divider====</code> line and add the following:</p>
@@ -235,7 +223,7 @@ var async = require("async");</div>
 			</p>
 			<p class="console">$ node buildNBA_Data.js</p>
 
-			<p>You're terminal should look like this:</p>
+			<p>Your terminal should look like this:</p>
 		</div>
 	</div>
 </section>
@@ -254,11 +242,10 @@ var async = require("async");</div>
 <div class="codeView" style="height:35px">// Create File Stream
 var inputStream = fs.createReadStream(path);</div>
 
-
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-			<p>This line allows us to read in the file which will then be used in our <code>fast-csv</code> <a href="https://github.com/C2FO/fast-csv#transforming">function</a>. Go ahead and copy-n-paste the following code after <code>// Read in CSV file</code> and delete that <code>console.log()</code> and <code>_aCallback()</code> that was there earlier:</p>
+			<p>This line allows us to read in the file which will then be used in our <a href="https://github.com/C2FO/fast-csv#transforming"><code>fast-csv</code> methods</a>. Go ahead and copy-n-paste the following code after <code>// Read in CSV file</code> and delete that <code>console.log()</code> and <code>_aCallback()</code> that was there earlier:</p>
 		</div>
 	</div>
 </section>
@@ -298,28 +285,23 @@ fast_csv.fromStream(inputStream,{
 		<div class="row">
 			<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				<h3 class="heading multiColor" id="code-checkup">Code Checkup</h3>
-				<p>OK so we're about to get to the good part! Before we do, if your code is not working, replace all your code with the following.</p>
+				<p>OK, so we're about to get to the good part! Before we do, if your code is not working, replace all your code with the following.</p>
 				<p>Your <code>buildNBA_Data.js</code> should look like this:</p>
 			</div>
 		</div>
 	</section>
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
+
+var _ = require("underscore");
 var fs = require('fs');
 var fast_csv = require("fast-csv");
 var async = require("async");
-var _ = require("underscore");
 
 // End of Modules
 
 /* Helper Section
 ============================================= */
-
-// Nifty function that we will be using a few times
-String.prototype.replaceAll = function(str1, str2, ignore) {
-	var Regex = new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\&lt;\&gt;\-\&amp;])/g,"\\$&amp;"),(ignore?"gi":"g"));
-	return this.replace(Regex,(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-};
 
 // End of Helper
 
@@ -339,9 +321,8 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 		// 1.B
 		return _.map(_.range(1981,2016), function (year) {
 			// 1.C
-			var b = './data/csv/REPLACE/leagues_NBA_',
-			e = '_REPLACE.csv',
-			finalStr = String(b+year+e).replaceAll('REPLACE',stat);
+			var finalStr = ['./data/csv/',stat,'/leagues_NBA_',
+							year,'_',stat,'.csv'].join('');
 
 			return finalStr;
 		});
@@ -350,6 +331,54 @@ String.prototype.replaceAll = function(str1, str2, ignore) {
 	// 2
 	_.flatten(pathList).forEach(function (path) {
 		console.log(path);
+	});
+})();
+
+/**
+* Main Function
+*/
+(function () {
+	// Type of stats
+	var STATS = ['totals', 'advanced'];
+
+	// 1
+	var pathList = _.flatten(_.map(STATS, function (stat) {
+
+		return _.map(_.range(1981,2016), function (year) {
+			var finalStr = ['./data/csv/',stat,'/leagues_NBA_',
+							year,'_',stat,'.csv'].join('');
+
+			return finalStr;
+		});
+	}));
+
+	// Divider ===================================
+
+	async.each(pathList, function (path, _aCallback) {
+
+		// Create File Stream
+		var inputStream = fs.createReadStream(path);
+
+		// Read in CSV file
+		fast_csv.fromStream(inputStream,{
+			headers: true,
+			ignoreEmpty: true
+		})
+		.transform(function(data){
+			// We might need this, im not sure...
+			// Foreshadowing!!!!!
+			return data;
+		})
+		.on("data", function(data){
+			console.log(data);
+		})
+		.on("end", function(){
+			console.log("done");
+			_aCallback();
+		});
+
+	}, function (err) {
+		console.log('hey were done!!');
 	});
 })();</div>
 
