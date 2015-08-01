@@ -740,6 +740,9 @@ Analysis()</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:195px">db.players.aggregate(
   {$unwind: "$Seasons"},
   {$match: {"Seasons.advanced.G": { $gt:50 }}},
@@ -750,6 +753,9 @@ Analysis()</div>
         Seasons:{ $push: "$Seasons"}}
     },
   {$out:"above50Games"})</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -781,43 +787,21 @@ Analysis()</div>
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Let's run it:</p>
             <p class="console">python3 runNBA_Data.py</p>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Hopefully, you got something like this:</p>
-        </div>
-        <div class="col-xs-12">
             <img class="tutImage" src="images/tutorialImages/prediction_02.61ed8c6e.png" alt="prediction_02.png">
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>I'm sure you're saying:
                 <strong><em>"Fabian 85% does not equal 95%! I'm getting really close to just leaving this tutorial! I'm tired of you playing with my emotions!!"</em></strong>
             </p>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>OK I'm sorry this is the last fix, <strong><em>I PROMISE!</em></strong> Remember that <code>polynomial_features</code>? Since <code>_deg</code> gets set to 1 in <code>Analysis(_deg=1)</code>, we aren't taking advantage of that feature. So at the very bottom of the page, the very last line, where you see <code>Analysis()</code> all by itself. Replace it with this:</p>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <div class="codeView_python" style="height:20px">Analysis(2)</div>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-            <p>and then run it. Watch your accuracy shoot up! By the way, it may take a little longer than before.
-                Let's try <code>3</code> next.
-            </p>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <p>and then run it. Watch your accuracy shoot up! By the way, it may take a little longer than before. Let's try <code>3</code> next.</p>
             <div class="codeView_python" style="height:20px">Analysis(3)</div>
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>You hopefully should've gotten this:</p>
-        </div>
-        <div class="col-xs-12">
             <img class="tutImage" src="images/tutorialImages/prediction_03.323fbfa2.png" alt="prediction_03.png">
-        </div>
-        <div class="col-xs-12">
+
             <p class="humorText"><u><strong>There's your <em>95% + 1</em>!</strong></u></p>
             <img class="tutImage" src="images/tutorialImages/drop_MIC.1ac6f159.gif" alt="drop_MIC.gif">
-        </div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+
             <p>Let's zoom into the graph a bit. At the end of <code>PlotLearningCurve()</code>, replace the following lines:</p>
         </div>
     </div>

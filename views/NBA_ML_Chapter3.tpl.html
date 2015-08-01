@@ -1273,33 +1273,31 @@ var buildData = function(paths) {
         <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 <p>We're just gonna set you up with a <a href="https://mongolab.com/signup/" title="MongoLab"><u><strong>FREE MongoLab account</strong></u></a>. Once you're signed in, you should be brought to a screen like this. Click the <strong>Create new</strong> button:</p>
+
+                <img class="tutImage" src="images/tutorialImages/mongolab_01.4340dcf8.png" alt="mongolab_01">
+                <p>For the free tier, select these options. Don't forget to put a database name at the bottom.</p>
+                <img class="tutImage" src="images/tutorialImages/mongolab_02.e2ca72c7.png" alt="mongolab_02">
+                <p>We need to create a database user to access the data. <u>Do not forget your <strong>username</strong> and <strong>password</strong></u>, we're going to need it to upload our data.</p>
+                <img class="tutImage" src="images/tutorialImages/mongolab_03.4be14674.png" alt="mongolab_03">
+                <p> on that same page, take note of your <u><strong>URI</strong></u>, we're going to be using it in the next step.</p>
+                <img class="tutImage" src="images/tutorialImages/mongolab_04.7c687389.png" alt="mongolab_04">
+                <p>In the root directory of this project, paste the following command with your credentials. Quick tips:</p> <p><var>-d = database</var>, <var>-c = collection</var>, <var>-u = username</var>, <var>-p = password</var>.</p>
+                <p class="console">$ mongoimport -h <span style="color:red">&lt;URI&gt;</span> -d mongolab_nba -c players -u <span style="color:red">&lt;USERNAME&gt;</span> -p <span style="color:red">&lt;PASSWORD&gt;</span> --file ./data/outputFile.json --jsonArray</p>
             </div>
-            <img class="tutImage" src="images/tutorialImages/mongolab_01.4340dcf8.png" alt="mongolab_01">
-            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>For the free tier, select these options. Don't forget to put a database name at the bottom.</p></div>
-            <img class="tutImage" src="images/tutorialImages/mongolab_02.e2ca72c7.png" alt="mongolab_02">
-            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>We need to create a database user to access the data. <u>Do not forget your <strong>username</strong> and <strong>password</strong></u>, we're going to need it to upload our data.</p></div>
-            <img class="tutImage" src="images/tutorialImages/mongolab_03.4be14674.png" alt="mongolab_03">
-            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p> on that same page, take note of your <u><strong>URI</strong></u>, we're going to be using it in the next step.</p></div>
-            <img class="tutImage" src="images/tutorialImages/mongolab_04.7c687389.png" alt="mongolab_04">
-            <div  class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2"><p>In the root directory of this project, paste the following command with your credentials. Quick tips:</p> <p><var>-d = database</var>, <var>-c = collection</var>, <var>-u = username</var>, <var>-p = password</var>.</p></div>
-        <div class="col-xs-12 col-md-10 col-md-offset-1">
-            <p class="console">$ mongoimport -h <span style="color:red">&lt;URI&gt;</span> -d mongolab_nba -c players -u <span style="color:red">&lt;USERNAME&gt;</span> -p <span style="color:red">&lt;PASSWORD&gt;</span> --file ./data/outputFile.json --jsonArray</p>
-        </div>
         </div>
     </section>
-
 
 </div>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-             <p>I use <a href="http://robomongo.org/">Robomongo</a> to view my database. If you have trouble setting it up, follow this <a href="https://scotch.io/quick-tips/connecting-to-mongodb-using-robomongo#setting-up"> super fast scotch tutorial</a>.
-                    Your database should look like this:
-                </p>
+            <p>I use <a href="http://robomongo.org/">Robomongo</a> to view my database. If you have trouble setting it up, follow this <a href="https://scotch.io/quick-tips/connecting-to-mongodb-using-robomongo#setting-up"> super fast scotch tutorial</a>.
+            Your database should look like this:</p>
+            <img class="tutImage" src="images/tutorialImages/robomongo_01.4c94f388.png" alt="robomongo_01.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/robomongo_01.4c94f388.png" alt="robomongo_01.png">
+
 <!-- Final Gif -->
 <section class="container">
     <div class="row">
