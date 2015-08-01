@@ -10,7 +10,7 @@
     <meta property="og:url" content="http://fabianbuentello.io/#/"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{ Page.title() }}</title>
-
+    <base href="/">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
 
@@ -40,10 +40,10 @@
                 </a>
             </li>
         </ul>
-        <a class="header-logo" href="#/">Fabian Buentello</a>
+        <a class="header-logo" ui-sref="/">Fabian Buentello</a>
         <ul class="nav nav-list pull-left">
             <li>
-                <a class="tileHeader navBarTile navBarTile" href="#/blog">Blog</a>
+                <a class="tileHeader navBarTile navBarTile" ui-sref="blog">Blog</a>
             </li>
         </ul>
     </header>
