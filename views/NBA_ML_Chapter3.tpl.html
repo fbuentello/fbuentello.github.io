@@ -19,6 +19,9 @@
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:340px">// Final Structure
 [
     {
@@ -40,6 +43,9 @@
     },
     ....
 ]</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -47,24 +53,32 @@
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:20px">var DB_OBJ = {};</div>
+</div>
+</div>
+</section>
 
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Next, jump inside of our <code>.on("data")</code> method inside of <code>buildData()</code>. Around this time of development, I was using a debugger like <a href="https://github.com/node-inspector/node-inspector" title="node-inspector">node-inspector</a>. It'll be too much of a hassle to bring the <code>debugging</code> aspect into this tutorial. So I'm just going to show you how the data looks like at this point of the program.</p>
+            <img class="tutImage" src="images/tutorialImages/node_inspector_01.5ac526a4.png" alt="node_inspector_01.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/node_inspector_01.5ac526a4.png" alt="node_inspector_01.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>This data is missing some very important information that we need to know. We don't know what season this data belongs to, or what stat folder it came from(totals, advanced). So we need to parse out the <strong><u>stat type</u></strong> and <strong><u>season</u></strong> from the file path, time for some good old fashion regex! I took it upon myself to find out the regex formula we are going to use.</p>
+            <img class="tutImage" src="images/tutorialImages/node_inspector_02.6d29d3e3.png" alt="node_inspector_02.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/node_inspector_02.6d29d3e3.png" alt="node_inspector_02.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -72,20 +86,27 @@
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:100px">.transform(function(data){
     var parsedPath = path.match(/(advanced|totals)|(\d{4})/g);
     data.statType = parsedPath[0];
     data.Season = parsedPath[1];
     return data;
 })</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Let's check the debugger to make sure we added <code>statType</code> and <code>Season</code> to our <code>data</code> variable. Don't worry about running it right now.</p>
+            <img class="tutImage" src="images/tutorialImages/node_inspector_03.35d7d840.png" alt="node_inspector_03.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/node_inspector_03.35d7d840.png" alt="node_inspector_03.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -94,6 +115,9 @@
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:195px">{
     "&lt;PLAYER NAME&gt;": { // LeBron James
         "&lt;SEASON YEAR&gt;" : { // 2007
@@ -106,6 +130,9 @@
         }
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -114,6 +141,9 @@
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:115px">console.log(data);
 // Does Player exist?
 if (!DB_OBJ.hasOwnProperty(data.Player)) {
@@ -121,6 +151,9 @@ if (!DB_OBJ.hasOwnProperty(data.Player)) {
 } else {
     // Player does exist
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -130,12 +163,18 @@ if (!DB_OBJ.hasOwnProperty(data.Player)) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:100px">// Player doesn't exist
 DB_OBJ[data.Player] = {}; // 1
 DB_OBJ[data.Player].Seasons = {}; // 2
 DB_OBJ[data.Player].Seasons[data.Season] = {}; // 3
 DB_OBJ[data.Player].Seasons[data.Season][data.statType] = {}; // 4
 DB_OBJ[data.Player].Seasons[data.Season][data.statType] = data; // 5</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -143,6 +182,9 @@ DB_OBJ[data.Player].Seasons[data.Season][data.statType] = data; // 5</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:130px">// Data Example, DONT PASTE THIS!!
 data = {
     Player : "LeBron James",
@@ -151,6 +193,9 @@ data = {
     G : "78",
     Age: "22"
 };</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -158,10 +203,16 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:65px">// DB_OBJ[data.Player] = {};
 {
     "LeBron James": {}
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -169,12 +220,18 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:100px">// DB_OBJ[data.Player].Seasons = {};
 {
     "LeBron James": {
         "Seasons" : {}
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -182,6 +239,9 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:130px">// DB_OBJ[data.Player].Seasons[data.Season] = {};
 {
     "LeBron James": {
@@ -190,6 +250,9 @@ data = {
         }
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -197,6 +260,9 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:200px">// DB_OBJ[data.Player].Seasons[data.Season][data.statType] = {};
 {
     "LeBron James": {
@@ -209,6 +275,9 @@ data = {
         }
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -216,6 +285,9 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:200px">// DB_OBJ[data.Player].Seasons[data.Season][data.statType] = data;
 {
     "LeBron James": {
@@ -228,6 +300,9 @@ data = {
         }
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -235,6 +310,9 @@ data = {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:390px">// 1
 var name = data.Player,
     yr = data.Season,
@@ -259,6 +337,9 @@ if (!DB_OBJ.hasOwnProperty(name)) {
 // 3
 DB_OBJ[name].Seasons[yr][stat] = {};
 DB_OBJ[name].Seasons[yr][stat] = data;</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -269,21 +350,28 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:85px">.on("end", function(){
     console.log("done");
     console.log(DB_OBJ);
     _aCallback();
 });</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Let's run it:</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>You should've gotten something similar to this:</p>
+            <img class="tutImage" src="images/tutorialImages/console_012.953ca28a.png" alt="console_012.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/console_012.953ca28a.png" alt="console_012.png">
+
 
 <section class="container">
     <div class="row">
@@ -294,7 +382,13 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
     </div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:20px">var jsonfile = require('jsonfile');</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -302,12 +396,18 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:100px">function (err) {
     console.log('*****DONE BUILDING DATA*****');
     jsonfile.writeFile('./data/outputFile.json', DB_OBJ, { spaces: 4}, function(err) {
         console.error(err);
     });
 });</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -315,6 +415,9 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">var buildData = function(paths) {
     async.each(paths, function (path, _aCallback) {
 
@@ -371,16 +474,20 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
         });
     });
 };</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Let's run it:</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>It should create a file called <strong><u>outputFile.json</u></strong> that should look like this, if not don't worry, a code check up is soon:</p>
+            <img class="tutImage" src="images/tutorialImages/sublime_02.c7e48eba.png" alt="sublime_02.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/sublime_02.c7e48eba.png" alt="sublime_02.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -388,18 +495,25 @@ DB_OBJ[name].Seasons[yr][stat] = data;</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:35px">// If Test is set, only get a few years
 var endYr = (isTest) ? 1990 : 2016;</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Let's run it:</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>Hopefully your <strong><u>outputFile.json</u></strong> looks like this:</p>
+            <img class="tutImage" src="images/tutorialImages/sublime_04.c62be7b9.png" alt="sublime_04.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/sublime_04.c62be7b9.png" alt="sublime_04.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -408,6 +522,9 @@ var endYr = (isTest) ? 1990 : 2016;</div>
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
 
@@ -588,6 +705,9 @@ var buildData = function(paths) {
     }
 
 })(process.argv[2], process.argv[3]);</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -599,10 +719,11 @@ var buildData = function(paths) {
                 <li>All values are <code>strings</code>.</li>
             </ol>
             <p>The first is self-explanatory. The second one causes problems when we want to search up certain players in the database. The third, I didn't pay too much attention to it at first... Until I had to apply math in the Machine Learning portion of this project. I tried converting them to floats while in Python. After 10 minutes of doing that, I figured it would be much easier for them to already be a float type in the database.</p> <p>So for my final trick.</p>
+            <img class="tutImage" src="images/tutorialImages/final_trick.16609a7f.gif" alt="final_trick">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/final_trick.16609a7f.gif" alt="final_trick">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -611,6 +732,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:230px">{
     "&lt;PLAYER NAME&gt;": { // LeBron James
         "Player" : "LeBron James",
@@ -625,6 +749,9 @@ var buildData = function(paths) {
         }
     }
 }</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -632,6 +759,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:350px">// Final Structure
 [
     {
@@ -653,6 +783,9 @@ var buildData = function(paths) {
     },
     ....`
 ]</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -660,6 +793,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:195px">var DB_OBJ = (function(data) {
 
     data.clean = function() {
@@ -672,6 +808,9 @@ var buildData = function(paths) {
 
     return data;
 })({});</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -682,10 +821,16 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:65px">.transform(function(data){
     var regex = path.match(/(advanced|totals)|(\d{4})/g);
     return DB_OBJ.filter(data, regex);
 })</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -693,6 +838,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:230px">data.filter = function(obj, reg) {
     obj.statType = reg[0];
     obj.Season = reg[1];
@@ -707,6 +855,9 @@ var buildData = function(paths) {
         return val;
     });
 };</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -714,10 +865,11 @@ var buildData = function(paths) {
             <p>Let's run it and see if the stats are no longer strings and we've removed the <code>*</code> from <u><strong>Kareem Abdul-Jabbar</strong></u>:</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>Did your stats turn into numbers like mine? if not, its ok, a code checkup is very soon!:</p>
+            <img class="tutImage" src="images/tutorialImages/sublime_05.f9fe5f9f.png" alt="sublime_05.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/sublime_05.f9fe5f9f.png" alt="sublime_05.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -725,6 +877,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:165px">data.clean = function() {
     delete data["clean"];
     delete data["filter"];
@@ -735,6 +890,9 @@ var buildData = function(paths) {
         return plyr;
     });
 };</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -742,6 +900,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:130px">[
     {
         "Player": "Kareem Abdul-Jabbar",
@@ -750,6 +911,9 @@ var buildData = function(paths) {
     },
     ....
 ]</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -757,6 +921,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:310px">[
     {
         "Player": "Kareem Abdul-Jabbar",
@@ -776,6 +943,9 @@ var buildData = function(paths) {
     },
     ....
 ]</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -783,20 +953,27 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:65px">jsonfile.writeFile('./data/outputFile.json', DB_OBJ.clean(), { spaces: 4}, function(err) {
     console.error(err);
 });
 </div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Now let's run it! :)</p>
             <p class="console">$ node buildNBA_Data.js =BUILD TEST</p>
             <p>Did you get something like this:</p>
+            <img class="tutImage" src="images/tutorialImages/sublime_06.f839ba3f.png" alt="sublime_06.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/sublime_06.f839ba3f.png" alt="sublime_06.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -804,7 +981,13 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:20px">jsonfile.writeFile('./data/outputFile.json', DB_OBJ.clean(), { spaces: 0}, function(err) {</div>
+</div>
+</div>
+</section>
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -823,10 +1006,11 @@ var buildData = function(paths) {
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
             <p>Your <strong><u>outputFile.json</u></strong> should look like the following(<strong>it may take a bit to load</strong>):</p>
+            <img class="tutImage" src="images/tutorialImages/sublime_07.30c3623b.png" alt="sublime_07.png">
         </div>
     </div>
 </section>
-<img class="tutImage" src="images/tutorialImages/sublime_07.30c3623b.png" alt="sublime_07.png">
+
 <section class="container">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -835,6 +1019,9 @@ var buildData = function(paths) {
         </div>
     </div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
 
@@ -1042,6 +1229,9 @@ var buildData = function(paths) {
     }
 
 })(process.argv[2], process.argv[3]);</div>
+</div>
+</div>
+</section>
 <section class="container" ng-init="exper = 0">
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">

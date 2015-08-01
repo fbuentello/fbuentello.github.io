@@ -71,7 +71,9 @@
 	</div>
 </section>
 
-
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
 
@@ -112,6 +114,9 @@ var _ = require("underscore");
 		console.log(path);
 	});
 })();</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -136,11 +141,12 @@ var _ = require("underscore");
 			<p class="console">$ node buildNBA_Data.js</p>
 
 			<p>And your terminal should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_001.9accee37.png" alt="console_001.png">
 		</div>
 	</div>
 </section>
 
-<img class="tutImage" src="images/tutorialImages/console_001.9accee37.png" alt="console_001.png">
+
 
 <section class="container">
 	<div class="row">
@@ -153,6 +159,9 @@ var _ = require("underscore");
 
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:360px">/**
 * Main Function
 */
@@ -175,6 +184,9 @@ var _ = require("underscore");
 
 
 })();</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -184,9 +196,15 @@ var _ = require("underscore");
 	</div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:53px">var fs = require('fs');
 var fast_csv = require("fast-csv");
 var async = require("async");</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -200,6 +218,9 @@ var async = require("async");</div>
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:195px">async.each(pathList, function (path, _aCallback) {
 
 	// Create File Stream
@@ -212,6 +233,9 @@ var async = require("async");</div>
 }, function (err) {
 	console.log('hey were done!!');
 });</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -223,12 +247,13 @@ var async = require("async");</div>
 			<p class="console">$ node buildNBA_Data.js</p>
 
 			<p>Your terminal should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_002.7c1a8348.png" alt="console_002.png">
 		</div>
 	</div>
 </section>
 
 
-<img class="tutImage" src="images/tutorialImages/console_002.7c1a8348.png" alt="console_002.png">
+
 
 
 <section class="container">
@@ -238,8 +263,14 @@ var async = require("async");</div>
 		</div>
 	</div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:35px">// Create File Stream
 var inputStream = fs.createReadStream(path);</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -252,6 +283,9 @@ var inputStream = fs.createReadStream(path);</div>
 
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:280px">// Read in CSV file
 fast_csv.fromStream(inputStream,{
 	headers: true,
@@ -269,17 +303,22 @@ fast_csv.fromStream(inputStream,{
 	console.log("done");
 	_aCallback();
 });</div>
+</div>
+</div>
+</section>
+
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>Let's run, shall we:</p>
 			<p class="console">$ node buildNBA_Data.js</p>
 			<p>You're terminal should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_003.d002c0dc.png" alt="console_003.png">
 		</div>
 	</div>
 </section>
 
-<img class="tutImage" src="images/tutorialImages/console_003.d002c0dc.png" alt="console_003.png">
+
 <section class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -289,6 +328,9 @@ fast_csv.fromStream(inputStream,{
 			</div>
 		</div>
 	</section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
 
@@ -354,6 +396,9 @@ var async = require("async");
 		console.log('hey were done!!');
 	});
 })();</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">

@@ -21,10 +21,11 @@
 				<li>Headers being repeated.</li>
 				<li>Empty columns.</li>
 			</ul>
+			<img class="tutImage" src="images/tutorialImages/excel_01.d50b6ea5.png" alt="excel issues">
 		</div>
 	</div>
 </section>
-<img class="tutImage" src="images/tutorialImages/excel_01.d50b6ea5.png" alt="excel issues">
+
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -36,6 +37,9 @@
 	</div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:140px">/**
 - Main Function
 */
@@ -43,6 +47,9 @@
 // Code in here
 // Stays the same
 })();</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -51,6 +58,9 @@
 		</div>
 	</div>
 </section>
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:140px">/**
 - Main Function
 */
@@ -58,6 +68,9 @@
 // Code in here
 // Stays the same
 })(process.argv[2], process.argv[3]);</div>
+</div>
+</div>
+</section>
 
 
 <section class="container">
@@ -85,6 +98,9 @@
 	</div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Functions Section
 ============================================= */
 
@@ -179,6 +195,9 @@ var buildData = function(paths) {
 
 })(process.argv[2], process.argv[3]);
 </div>
+</div>
+</div>
+</section>
 
 
 
@@ -195,6 +214,9 @@ var buildData = function(paths) {
 	</div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:280px">var cleanData = function(paths) {
 
 	// 1
@@ -210,6 +232,9 @@ var buildData = function(paths) {
 		console.log('*****DONE CLEANING DATA*****');
 	});
 };</div>
+</div>
+</div>
+</section>
 
 <section class="container">
 	<div class="row">
@@ -223,11 +248,12 @@ var buildData = function(paths) {
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p class="console">$ node buildNBA_Data.js =CLEAN TEST</p>
 			<p>You should've gotten a result like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_004.4bfc8eb8.png" alt="console_004.png">
 		</div>
 	</div>
 </section>
 
-<img class="tutImage" src="images/tutorialImages/console_004.4bfc8eb8.png" alt="console_004.png">
+
 
 
 
@@ -241,12 +267,13 @@ var buildData = function(paths) {
 				<li>Empty columns.</li>
 			</ol>
 			<p>Let's start off with 3. If you scroll up on your terminal till you get to the gap, you should see the following:</p>
+			<img class="tutImage" src="images/tutorialImages/console_005.63c79488.png" alt="console_005.png">
 		</div>
 	</div>
 </section>
 
 
-<img class="tutImage" src="images/tutorialImages/console_005.63c79488.png" alt="console_005.png">
+
 
 
 <section class="container">
@@ -258,9 +285,15 @@ var buildData = function(paths) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:60px">// Remove double commas
 data_Str = data_Str.replace(/,,/g,',0,');
 var data_Arr = data_Str.split("\n");</div>
+</div>
+</div>
+</section>
 
 
 
@@ -288,13 +321,14 @@ var data_Arr = data_Str.split("\n");</div>
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>We're going to replace every <code>,,</code> with <code>,0,</code>.  I know what you're thinking, <strong><em>"Fabian, but then I'm just going to have a column full of zeros!"</em></strong> Jimmy, what have I told you about worrying? Don't worry, I got <strong>CHU</strong>. The reason we are replacing them with a <code>,0,</code> is because some stats just aren't there. Plus We don't want to shift the entire row over. Check out what I mean, had we used this --&gt; <code>replace(/,,/g,',');</code>, Kareem Abdul-Jabbar would've started 2976 games in 1981. Count the commas inside of the red lines!</p>
+			<img class="tutImage" src="images/tutorialImages/console_006.6b5d3668.png" alt="console_006.png">
 		</div>
 	</div>
 </section>
 
 
 
-<img class="tutImage" src="images/tutorialImages/console_006.6b5d3668.png" alt="console_006.png">
+
 
 
 
@@ -307,13 +341,14 @@ var data_Arr = data_Str.split("\n");</div>
 			<p>Yes, because of the empty row at the beginning of each file. We're going to solve that next, but first <code>console.log(data_Arr)</code> instead of <code>data_Str</code> and run it:</p>
 			<p class="console">$ node buildNBA_Data.js =CLEAN TEST</p>
 			<p>If you scroll all the way to the beginning of the last array, you should see an empty row.</p>
+			<img class="tutImage" src="images/tutorialImages/console_007.7308b8d6.png" alt="console_007.png">
 		</div>
 	</div>
 </section>
 
 
 
-<img class="tutImage" src="images/tutorialImages/console_007.7308b8d6.png" alt="console_007.png">
+
 
 
 
@@ -328,10 +363,16 @@ var data_Arr = data_Str.split("\n");</div>
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:80px">// Check if first row is empty
 if (!data_Arr[0].length) {
 	data_Arr.shift();
 }</div>
+</div>
+</div>
+</section>
 
 
 
@@ -339,13 +380,14 @@ if (!data_Arr[0].length) {
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>We are going to use the <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift">shift()</a></code> method to remove the first row. Let's run it one more time and see if we sent the <strong><em>Empty Row Bandit</em></strong> to the gates of <strong>HELL</strong>! Ok, maybe that was a bit too much.</p>
+			<img class="tutImage" src="images/tutorialImages/console_008.c66faf3f.png" alt="console_008.png">
 		</div>
 	</div>
 </section>
 
 
 
-<img class="tutImage" src="images/tutorialImages/console_008.c66faf3f.png" alt="console_008.png">
+
 
 
 
@@ -359,9 +401,15 @@ if (!data_Arr[0].length) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:60px">data_Arr = _.filter(data_Arr, function (_str) {
 	return (_str.indexOf('Rk,Player'));
 });</div>
+</div>
+</div>
+</section>
 
 
 <section class="container">
@@ -374,6 +422,9 @@ if (!data_Arr[0].length) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">//RUN IN REPL.IT
 
 str_ONE = 'Rk,Player,Pos,Age,Tm,G,MP,PER,TS%,3PAr,FTr,ORB%,';
@@ -408,6 +459,9 @@ if (test3) {
 	console.log(test3);
 }
 </div>
+</div>
+</div>
+</section>
 
 
 
@@ -415,13 +469,14 @@ if (test3) {
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>We're so close guys, almost done cleaning the data. <strong>So why are we removing all the headers? </strong> Well Jimbo, when I made this project, I realize that some of the headers didn't match up. Let me show you what I mean, check out the photo below.</p>
+			<img class="tutImage" src="images/tutorialImages/headerCheck.b8c687cc.png" alt="headerCheck.png">
 		</div>
 	</div>
 </section>
 
 
 
-<img class="tutImage" src="images/tutorialImages/headerCheck.b8c687cc.png" alt="headerCheck.png">
+
 
 
 
@@ -435,6 +490,9 @@ if (test3) {
 	</div>
 </section>
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:300px">var getHeader = function (path) {
 	var statObj = {
 		'totals': 'Rk,Player,Pos,Age,Tm,G,GS,MP,FG,FGA,FG%,3P,3PA,3P%,2P,2PA,2P%,eFG%,FT,FTA,FT%,ORB,DRB,TRB,AST,STL,BLK,TOV,PF,PTS',
@@ -451,6 +509,9 @@ if (test3) {
 	// 3
 	return _.compact(header)[0];
 };</div>
+</div>
+</div>
+</section>
 
 
 
@@ -466,7 +527,13 @@ if (test3) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:20px">var finalHeader = getHeader(filePath);</div>
+</div>
+</div>
+</section>
 
 
 
@@ -480,6 +547,9 @@ if (test3) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">var cleanData = function(paths) {
 
 	async.each(paths, function(filePath, callback) {
@@ -510,6 +580,9 @@ if (test3) {
 	});
 };
 </div>
+</div>
+</div>
+</section>
 
 
 
@@ -536,6 +609,7 @@ if (test3) {
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>Your console should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_010.5d34c40d.png" alt="console_010.png">
 		</div>
 	</div>
 </section>
@@ -543,7 +617,7 @@ if (test3) {
 
 
 
-<img class="tutImage" src="images/tutorialImages/console_010.5d34c40d.png" alt="console_010.png">
+
 
 
 
@@ -560,6 +634,9 @@ if (test3) {
 
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:260px">var getHeader = function (path) {
 	var statObj = {
 		'totals': 'Rk,Player,Pos,Age,Tm,G,GS,MP,FG,FGA,FG%,3P,3PA,3P%,2P,2PA,2P%,eFG%,FT,FTA,FT%,ORB,DRB,TRB,AST,STL,BLK,TOV,PF,PTS',
@@ -574,6 +651,9 @@ if (test3) {
 		}
 	}))[0];
 };</div>
+</div>
+</div>
+</section>
 
 
 
@@ -586,12 +666,18 @@ if (test3) {
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:100px">// 1
 data_Arr.unshift(finalHeader);
 // 2
 var outputPath = filePath.replace(/csv/,'output');
 // 3
 fs.writeFileSync(outputPath, data_Arr.join('\n'));</div>
+</div>
+</div>
+</section>
 
 
 
@@ -605,11 +691,12 @@ fs.writeFileSync(outputPath, data_Arr.join('\n'));</div>
 			<p>Let's test it before we apply it to all our data.</p>
 			<p class="console">$ node buildNBA_Data.js =CLEAN TEST</p>
 			<p>Open up your <code>testData/advanced/leagues_NBA_1981_advanced.csv</code> file and make sure everything looks correct. It should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/sublime_01.2dc0b463.png" alt="sublime_01.png">
 		</div>
 	</div>
 </section>
 
-<img class="tutImage" src="images/tutorialImages/sublime_01.2dc0b463.png" alt="sublime_01.png">
+
 
 
 
@@ -624,6 +711,9 @@ fs.writeFileSync(outputPath, data_Arr.join('\n'));</div>
 </section>
 
 
+<section class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <div class="codeView" style="height:500px">/* Modules Section
 ============================================= */
 
@@ -779,16 +869,20 @@ var buildData = function(paths) {
 })(process.argv[2], process.argv[3]);
 
 </div>
+</div>
+</div>
+</section>
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 			<p>Once you check that everything is correct let's run it for production!</p>
 			<p class="console">$ node buildNBA_Data.js =CLEAN</p>
 			<p>Your console should look like this:</p>
+			<img class="tutImage" src="images/tutorialImages/console_011.09d643c4.png" alt="console_011.png">
 		</div>
 	</div>
 </section>
-<img class="tutImage" src="images/tutorialImages/console_011.09d643c4.png" alt="console_011.png">
+
 <section class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
