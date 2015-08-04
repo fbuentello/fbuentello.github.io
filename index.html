@@ -1,16 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" ng-app="websiteApp" ng-controller="mainController">
   <head>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
-
-    <link rel="stylesheet" href="styles/main.cbba87fb.css">
-
-    <script src="scripts/vendor.c0c3a8ec.js"></script>
-
-    <script src="scripts/scripts.32864fe1.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta property="og:title" content="Fabian | Developer"/>
+    <meta property="og:title" content="{{Page.title()}}"/>
     <meta property="og:image" content="http://fabianbuentello.io/images/tutorialImages/nba-logo-vector-fb.ab91818a.png" />
     <meta property="og:image" content="http://fabianbuentello.io/images/users/fabian-animated-face-1000.6ee50ded.png" />
     <meta property="og:site_name" content="fabianbuentello.io"/>
@@ -19,9 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{Page.title()}}</title>
     <meta name="description" content="I don't get motivated by money to work harder, I get motivated by my own curiosity.">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
 
+    <link rel="stylesheet" href="styles/main.cbba87fb.css">
   </head>
-  <body>
+    <body data-status="{{ status }}">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -92,5 +87,8 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
+     <script src="scripts/vendor.c0c3a8ec.js"></script>
+
+    <script src="scripts/scripts.183966c2.js"></script>
 </body>
 </html>
