@@ -1,0 +1,165 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" ng-app="websiteApp" ng-controller="mainController">
+	<head>
+		<base href="../../../">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta property="og:title" content="Predict NBA ‘PER’ stat with Machine Learning"/>
+		<meta property="og:image" content="http://fabianbuentello.io/images/tutorialImages/nba-logo-vector-fb.ab91818a.png" />
+		<meta property="og:site_name" content="fabianbuentello.io"/>
+		<meta property="og:description" content="I’m going to show you the steps that I took in order to clean, structure, and run the data used to predict a player's PER rating with an accuracy of at least 95%."/>
+		<meta property="og:url" content="http://fabianbuentello.io/blog/NBA_Machine_Learning_Tutorial/"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		<title>Predict NBA ‘PER’ stat with Machine Learning</title>
+		<meta name="description" content="I’m going to show you the steps that I took in order to clean, structure, and run the data used to predict a player's PER rating with an accuracy of at least 95%.">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
+
+		<link rel="stylesheet" href="styles/main.cbba87fb.css">
+	</head>
+	<body>
+	<!--[if lt IE 7]>
+	  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+	<!-- Add your site or application content here -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=839867922725468";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- NAVBAR -->
+	<nav-bar autoscroll="true"></nav-bar>
+
+	<!-- BLOG VIEW -->
+	<div ng-controller="blogController" class="content" style="padding-top:40px;margin-bottom:100px;">
+		<div autoscroll="true" ui-view class="content-inner">
+
+				<section class="container">
+					<div class="row">
+						<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+							<h1 class="tileHeader multiColor text-center">Predict NBA ‘PER’ stat with Machine Learning</h1>
+							<h5 class="tileHeader text-center">by Fabian Buentello<br>7/24/2015</h5>
+							<h3 class="tileHeader multiColor page-header">Introduction</h3>
+							<p>Before I get started, I want to say this is my first blog/tutorial ever. So bear with me if
+								you find the structure of this tutorial a bit unorthodox. I’m just going to follow the structure I
+								see on some other online tutorials along with throwing a little "Fabian pizzazz" on it. This
+								tutorial will be half tutorial, half blog, and half BuzzFeed article. So we're talking about
+								a 150% of pure awesomeness. Unfortunately, this article is not for the beginner/novice level.
+								I’m going to assume you have experience with Python, Node.JS, and
+								MongoDB. If not, don't worry, I will provide links to everything you need to get started throughout the tutorial. You can find the official repo to this project <a href="https://github.com/fbuentello/NBA-Machine-Learning-Tutorial" title="here">here</a>.
+							</p>
+
+							<p>Due to the amount of details in this tutorial, some may find it lengthy. If you want to go straight to the machine learning portion, you can skip straight to <a ui-sref="blog.NBA_Machine_Learning_Tutorial4">Chapter 4</a>. If that's the case, you still need to do the MongoDB portion at the end of Chapter 3.</p>
+
+							<p>
+								If you have little or no experience with machine learning, I recommend you quickly read over Dr. Konstantinova's short article, <a href="http://nkonst.com/machine-learning-explained-simple-words/" title="Machine_learning_explained">Machine learning explained in simple words</a>.
+							</p>
+
+							<h3 class="tileHeader multiColor">What are we doing?</h3>
+
+							<p>I’m going to show you the steps that I took in order to <u><b>clean</b></u>, <u><b>structure</b></u>, and <u><b>run the data</b></u> used to predict a player's PER rating with an accuracy of at least 95%.</p>
+							<p>If you have no idea what the PER score is used for, let me explain. <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating">PER(Player Efficiency Rating)</a>, developed by John Hollinger, is a number used by the NBA to rate a player's performance throughout the season. If you scroll down to the <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating#Calculation">bottom of the wiki page</a>, you'll see Hollinger's original formula. Don't worry, we're not going to touch on that at all, actually we're really not going to do much math.</p>
+							<p>This tutorial will be extremely detailed so that no one gets lost. I’m going to break down this tutorial into four chapters:</p>
+							<ul>
+								<li>Chapter 1. Read Data</li>
+								<li>Chapter 2. Clean Data</li>
+								<li>Chapter 3. Output Data</li>
+								<li>Chapter 4. Machine Learning</li>
+							</ul>
+
+							<p>We will be using <a href="https://nodejs.org/download/">NodeJS</a> and <a href="https://www.python.org/downloads/">Python3</a> throughout this project.</p>
+
+							<p>Ch 1. <strong>Read Data</strong></p>
+
+							<p>We will be using NodeJS to do the following:</p>
+							<ul>
+								<li>Generate file paths.</li>
+								<li>Read in the CSV files.</li>
+							</ul>
+
+							<p>Ch 2. <strong>Clean Data</strong></p>
+							<ul>
+								<li>Clean Data.</li>
+							</ul>
+							<p>Ch 3. <strong>Output Data</strong></p>
+							<ul>
+								<li>Structure Data.</li>
+								<li>Export to MongoDB.</li>
+							</ul>
+
+							<p>Ch 4. <strong>Machine Learning</strong> <br>
+								We will be using Python to go over the Machine Learning portion of this project. We will be connecting to MongoDB using python to read in the data for which we are then going to apply a linear regression algorithm to predict the player’s PER.
+							</p>
+							<p class="humorText">There's only one question I want to ask you...</p>
+					<img class="tutImage" src="images/tutorialImages/are_you_ready.713635a5.gif" alt="White Goodman are you ready?">
+							<h3 class="tileHeader multiColor">
+								<a class="pull-right" ui-sref="NBA_Machine_Learning_Tutorial1">
+									Chapter 1 <i class="fa fa-arrow-right"></i>
+								</a>
+							</h3>
+						</div>
+					</div>
+				</section>
+			<!-- BLOG -->
+		</div>
+		<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" id="disqus_thread"></div>
+			<script type="text/javascript">
+				/* * * CONFIGURATION VARIABLES * * */
+				var disqus_shortname = 'fabianbuentelloio';
+
+				/* * * DON'T EDIT BELOW THIS LINE * * */
+				(function() {
+					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+					dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				})();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+	</div>
+
+	<!-- FOOTER -->
+	<footer class="footer">
+		<div class="container">
+			<div class="col-xs-12">
+				<p style="margin: 5px 0px;">fabian.buentello@gmail.com</p>
+				<div style="margin-bottom:10px" class=" row fb-like" data-href="http://fabianbuentello.io/blog/NBA_Machine_Learning_Tutorial" data-width="400" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+			</div>
+		</div>
+	</footer>
+	<div class="fbtn-container" ng-init='isClicked = false'>
+		<div class="fbtn-inner" ng-class="{'openThis':isClicked}">
+			<a class="fbtn multiBGColor fbtn-lg" style="color:white;" ng-click="isClicked = !isClicked" data-toggle="dropdown">
+			<span class="fbtn-text">Links</span>
+			<span class="fbtn-ori icon icon-open-in-new"></span>
+			<span class="fbtn-sub icon icon-close"></span></a>
+			<div class="fbtn-dropdown">
+				<a class="fbtn" href="https://github.com/fbuentello" target="_blank">
+				<span class="fbtn-text">Follow me on github</span>
+				<span class="fa fa-github"></span></a>
+				<a class="fbtn fbtn-blue" href="https://twitter.com/initFabian" target="_blank">
+				<span class="fbtn-text">Follow Fabian on Twitter</span>
+				<span class="fa fa-twitter"></span></a>
+			</div>
+		</div>
+	</div>
+
+	<div style="visibility:hidden">Icons made by <a href="http://www.flaticon.com/authors/icon-works" title="Icon Works">Icon Works</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+	<script>
+	!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+	(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+	r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+	}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-65974674-1');
+	ga('send', 'pageview');
+	</script>
+	 <script src="scripts/vendor.c0c3a8ec.js"></script>
+
+	<script src="scripts/scripts.ddb8c384.js"></script>
+</body>
+</html>

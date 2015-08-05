@@ -1,17 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" ng-app="websiteApp" ng-controller="mainController">
   <head>
+	<base href="../../">
 	<meta charset="utf-8">
-	<meta name="fragment" content="!" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta property="og:title" content="Fabian | Developer"/>
-	<meta property="og:image" content="http://fabianbuentello.io/images/tutorialImages/nba-logo-vector-fb.ab91818a.png" />
+	<meta property="og:title" content="Fabian's blog"/>
 	<meta property="og:image" content="http://fabianbuentello.io/images/users/fabian-animated-face-1000.6ee50ded.png" />
 	<meta property="og:site_name" content="fabianbuentello.io"/>
-	<meta property="og:description" content="Curiosity is what motivates me to work harder."/>
-	<meta property="og:url" content="http://fabianbuentello.io/"/>
+	<meta property="og:description" content="See what Fabian has been on working on."/>
+	<meta property="og:url" content="http://fabianbuentello.io/blog/"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Fabian | Developer</title>
-	<meta name="description" content="Curiosity is what motivates me to work harder.">
+	<title>Fabian's blog</title>
+	<meta name="description" content="See what Fabian has been on working on.">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<link rel="shortcut icon" type="image/png" href="/images/users/computer.b0ecac64.png"/>
 
@@ -31,50 +30,52 @@
 	  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4&appId=839867922725468";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- NAVBAR -->
 	<nav-bar></nav-bar>
 
-
-	<div class="content">
+	<!-- BLOG VIEW -->
+	<div ng-controller="blogController" class="content">
 		<div class="content-inner">
 
-			<section class="container">
-				<h1 class="heading text-center multiColor" style="font-weight:300">70 words or less</h1>
-				<div class="row">
-					<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-						<div class="text-center">
-							<p>Software Developer</p>
-							<p>Houston,TX</p>
-						</div>
+			<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" style="padding-top:20px;margin-bottom:100px;">
 
-						<p>Here's the part of the website where I tell you how I'm a hard worker and that I'm very passionate about programming, but that would be an understatement. The truth is, I am very good at what I do because it's what I enjoy doing. I don't get motivated by money to work harder, I get motivated by my own curiosity.</p>
+			<h1 class="heading text-center multiColor" style="font-weight:300">Blog</h1>
+			<div class="row">
+
+				<h2 class="content-sub-heading multiColor">Blog/Tutorials</h2>
+
+				<div class="col-xs-8 col-xs-offset-2 col-sm-4">
+
+				<div class="card">
+					<div class="card-main">
+					<div class="card-img">
+						<img alt="alt text" src="images/tutorialImages/nba-logo-vector.b2684080.png">
+						<p class="card-img-heading">Predict NBA Players PER with Machine Learning</p>
+					</div>
+					<div class="card-action">
+						<ul class="nav nav-list pull-left">
+						<li>
+							<a class="noHighlight" href="/blog/NBA_Machine_Learning_Tutorial"><span class="collapsed-hide">Read</span></a>
+						</li>
+						</ul>
+					</div>
 					</div>
 				</div>
-			</section>
-
-					<!-- LANGUAGES -->
-			<section class="container">
-				<div class="row">
-					<h2 class="content-sub-heading multiColor">Fabian's Favorite Four</h2>
-					<div class="col-sm-6" ng-repeat="lang in languages">
-						<div ng-show="lang" class="tile-wrap language">
-							<div class="tile tile-collapse">
-								<div class="tile-inner langColor {{lang.langClass}}">
-									<div class="text-overflow">{{lang.name}}</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-			</section>
+			</div>
+			</div>
+			<!-- BLOG -->
 		</div>
 	</div>
+
 
 
 	<footer class="footer">
 		<div class="container">
 			<div class="col-xs-12">
 				<p style="margin: 5px 0px;">fabian.buentello@gmail.com</p>
-				<div style="margin-bottom:10px" class=" row fb-like" data-href="http://fabianbuentello.io/" data-width="400" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+				<div style="margin-bottom:10px" class=" row fb-like" data-href="http://fabianbuentello.io/blog/" data-width="400" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 			</div>
 		</div>
 	</footer>
@@ -97,14 +98,14 @@
 
 	<div style="visibility:hidden">Icons made by <a href="http://www.flaticon.com/authors/icon-works" title="Icon Works">Icon Works</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-	 <script>
-	   !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-	   (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-	   r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-	   }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<script>
+	!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+	(A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+	r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+	}(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	   ga('create', 'UA-65974674-1');
-	   ga('send', 'pageview');
+	ga('create', 'UA-65974674-1');
+	ga('send', 'pageview');
 	</script>
 	 <script src="scripts/vendor.c0c3a8ec.js"></script>
 
