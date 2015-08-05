@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+
+
+		<h1 class="tileHeader multiColor text-center">Predict NBA ‘PER’ stat with Machine Learning</h1>
+
+
+
+		<h5 class="tileHeader text-center">by Fabian Buentello<br>7/24/2015</h5>
+
+
+		<h3 class="tileHeader multiColor page-header">Introduction</h3>
+
+		<p>Before I get started, I want to say this is my first blog/tutorial ever. So bear with me if
+		you find the structure of this tutorial a bit unorthodox. I’m just going to follow the structure I
+		see on some other online tutorials along with throwing a little "Fabian pizzazz" on it. This
+		tutorial will be half tutorial, half blog, and half BuzzFeed article. So we're talking about
+		a 150% of pure awesomeness. Unfortunately, this article is not for the beginner/novice level.
+		I’m going to assume you have experience with Python, Node.JS, and
+		MongoDB. If not, don't worry, I will provide links to everything you need to get started throughout the tutorial. You can find the official repo to this project <a href="https://github.com/fbuentello/NBA-Machine-Learning-Tutorial" title="here">here</a>.</p>
+
+		<p>Due to the amount of details in this tutorial, some may find it lengthy. If you want to go straight to the machine learning portion, you can skip straight to <a ui-sref="blog.NBA_Machine_Learning_Tutorial4">Chapter 4</a>. If that's the case, you still need to do the MongoDB portion at the end of Chapter 3.</p>
+
+		<p>
+			If you have little or no experience with machine learning, I recommend you quickly read over Dr. Konstantinova's short article, <a href="http://nkonst.com/machine-learning-explained-simple-words/" title="Machine_learning_explained">Machine learning explained in simple words</a>.
+		</p>
+
+		<h3 class="tileHeader multiColor">What are we doing?</h3>
+
+		<p>I’m going to show you the steps that I took in order to <u><b>clean</b></u>, <u><b>structure</b></u>, and <u><b>run the data</b></u> used to predict a player's PER rating with an accuracy of at least 95%.</p>
+		<p>If you have no idea what the PER score is used for, let me explain. <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating">PER(Player Efficiency Rating)</a>, developed by John Hollinger, is a number used by the NBA to rate a player's performance throughout the season. If you scroll down to the <a href="https://en.wikipedia.org/wiki/Player_efficiency_rating#Calculation">bottom of the wiki page</a>, you'll see Hollinger's original formula. Don't worry, we're not going to touch on that at all, actually we're really not going to do much math.</p>
+		<p>This tutorial will be extremely detailed so that no one gets lost. I’m going to break down this tutorial into four chapters:</p>
+		<ul>
+			<li>Chapter 1. Read Data</li>
+			<li>Chapter 2. Clean Data</li>
+			<li>Chapter 3. Output Data</li>
+			<li>Chapter 4. Machine Learning</li>
+		</ul>
+
+		<p>We will be using <a href="https://nodejs.org/download/">NodeJS</a> and <a href="https://www.python.org/downloads/">Python3</a> throughout this project.</p>
+
+		<p>Ch 1. <strong>Read Data</strong></p>
+
+		<p>We will be using NodeJS to do the following:</p>
+		<ul>
+			<li>Generate file paths.</li>
+			<li>Read in the CSV files.</li>
+		</ul>
+
+		<p>Ch 2. <strong>Clean Data</strong></p>
+		<ul>
+			<li>Clean Data.</li>
+		</ul>
+		<p>Ch 3. <strong>Output Data</strong></p>
+		<ul>
+			<li>Structure Data.</li>
+			<li>Export to MongoDB.</li>
+		</ul>
+
+		<p>Ch 4. <strong>Machine Learning</strong> <br>
+			We will be using Python to go over the Machine Learning portion of this project. We will be connecting to MongoDB using python to read in the data for which we are then going to apply a linear regression algorithm to predict the player’s PER.
+		</p>
+		<p class="humorText">There's only one question I want to ask you...</p>
+		<img class="tutImage" src="images/tutorialImages/are_you_ready.713635a5.gif" alt="White Goodman are you ready?">
+			<h3 class="tileHeader multiColor">
+				<a class="pull-right" ui-sref="blog.NBA_Machine_Learning_Tutorial1">
+					Chapter 1 <i class="fa fa-arrow-right"></i>
+				</a>
+			</h3>
+		</div>
+	</div>

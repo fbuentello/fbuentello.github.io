@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="content-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-push-3 col-sm-10 col-sm-push-1">
+          <h1 class="heading" style="height: 48px"></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-inner">
+
+    <section class="container">
+      <h1 class="heading text-center multiColor" style="font-weight:300">70 words or less</h1>
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+          <div class="text-center">
+            <p>Software Developer</p>
+            <p>Houston,TX</p>
+          </div>
+
+          <p>Here's the part of the website where I tell you how I'm a hard worker and that I'm very passionate about programming, but that would be an understatement. The truth is, I am very good at what I do because it's what I enjoy doing. I don't get motivated by money to work harder, I get motivated by my own curiosity.</p>
+        </div>
+      </div>
+    </section>
+
+        <!-- LANGUAGES -->
+    <section class="container">
+      <div class="row">
+        <h2 class="content-sub-heading multiColor">Fabian's Favorite Four</h2>
+        <div class="col-sm-6" ng-repeat="lang in languages">
+          <div ng-show="lang" class="tile-wrap language">
+            <div class="tile tile-collapse">
+              <div class="tile-inner langColor {{lang.langClass}}">
+                <div class="text-overflow">{{lang.name}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
