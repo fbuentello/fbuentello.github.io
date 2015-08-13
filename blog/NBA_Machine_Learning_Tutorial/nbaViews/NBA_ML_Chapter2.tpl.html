@@ -207,7 +207,21 @@ var buildData = function(paths) {
 			<u><p class="partDesc"><strong>Inside of Main Function</strong></p></u>
 			<p><u><strong>Part 1</strong></u> - We check our <code>task</code> argument and we see if it is inside of our array of <code>allowed tasks</code>. If it is not in the array, we end the program.</p>
 			<p><u><strong>Part 2</strong></u> - We made a new variable <code>endYr</code>, it's value depends on whether or not <code>isTest</code> is set. If <code>isTest</code> is set, I'm only allowing our <code>_.range()</code> function to go up to 1982 because I  don't want to generate all the file paths, just a few. You can change the number if you want.</p>
-			<p><u><strong>Part 3</strong></u> - We turned <code>pathList</code> into a function that takes in an argument. Depending on <code>beg</code>, we'll either generate the file paths to our <code>./data/csv/</code> or <code>./data/output/</code> folder.</p>
+			<p><u><strong>Part 3</strong></u> - We turned <code>pathList</code> into a function that takes in an argument. Depending on <code>beg</code>, we'll either generate the file paths to our <code>./data/csv/</code> or <code>./data/output/</code> folder. <b>Be sure to create an <i class="fa fa-folder"></i> output folder if you haven't already.</b></p>
+			<div class="directorySection">
+				<p>Your directory should look like this:</p>
+				<p><i class="fa fa-folder-open"></i>NBA-Machine-Learning-Tutorial</p>
+				<p><i class="fa fa-folder-open tabOver"></i> data</p>
+				<p><i class="fa fa-folder-open tabOver2"></i> csv</p>
+				<p><i class="fa fa-folder-open tabOver3"></i> advanced</p>
+				<p><i class="fa fa-folder-open tabOver3"></i> totals</p>
+				<p><i class="fa fa-folder-open tabOver2"></i> output</p>
+				<p><i class="fa fa-folder-open tabOver3"></i> advanced</p>
+				<p><i class="fa fa-folder-open tabOver3"></i> totals</p>
+				<p><i class="fa fa-file tabOver"></i> buildNBA_Data.js</p>
+				<p><i class="fa fa-file tabOver"></i> package.json</p>
+			</div>
+
 			<p><u><strong>Part 4</strong></u> - Depending on what task you choose, we set the <code>beg</code> to the appropriate path. Then we send you to either <code>buildData()</code> which contains our <code>fast_csv</code> code, or our new function called <code>cleanData()</code>.</p>
 			<p>Go ahead and run the code with a combination of <kbd>=BUILD</kbd> <kbd>=CLEAN</kbd> and <kbd>TEST</kbd> to make sure everything is working properly. If not, don't worry there's a <em>Code Checkup</em> at the end of this section. Now that all of that is done, let's get back to what we wanted to do to begin with, which is to clean up the data.  Make your <code>cleanData()</code>(top of <code>Function Section</code>) look like this:</p>
 		</div>
