@@ -6,25 +6,23 @@ tags:
   - swift
 ---
 
-# Using Enum Dictionaries as Arguments
-
 ## Intro and Problem
 
-I learned a lot of things while developing [Cely](https://github.com/chaione/cely), but one of the coolest things was looking at `enum` dictionaries as a way to pass in arguments as an alternative to having optional parameters with default values. To illustrate what I'm talking about, check out this example:
+I learned a lot of things while developing [Cely](https://github.com/chaione/cely), but by far one of the coolest things I learned was using a `enum` dictionary as a way to pass in arguments. This would act as a replacement to having optional parameters with default values. To illustrate what I'm talking about, check out this example:
 
 ```swift
 enum RequestOptions {
-    case httpMethod
-    case encoding
-    case body
-    ...
+	case httpMethod
+	case encoding
+	case body
+	...
 }
 
 // not including completion block for example
 func request(_ apiEndpoint: String, options: [RequestOptions: Any?]) {
-    let httpMethod = options[.httpMethod] as? HTTPMethod ?? .get
-    let body = options[.body] as? [String: Any?] ?? [:]
-    ...
+	let httpMethod = options[.httpMethod] as? HTTPMethod ?? .get
+	let body = options[.body] as? [String: Any?] ?? [:]
+	...
 }
 
 
@@ -32,11 +30,11 @@ func request(_ apiEndpoint: String, options: [RequestOptions: Any?]) {
 ...
 // usage
 request("/example", options: [
-    .httpMethod: .post,
-    .encoding: JSONEncoding.default,
-    .body: [
-        "username": "initFabian"
-    ]
+	.httpMethod: .post,
+	.encoding: JSONEncoding.default,
+	.body: [
+		"username": "initFabian"
+	]
 ])
 ...
 ```
@@ -105,7 +103,7 @@ public enum CelyOptions {
 }
 ```
 
-Which would make the declaration of `setup(_:)` and it’s usage look as such:
+Which would make the declaration of `setup(_:)` look like:
 
 ```swift
 // Removed generic code to prevent confusion
@@ -119,12 +117,12 @@ func setup(with window: UIWindow?, forModel: CelyUser, requiredProperties:[RawRe
 // Usage
 
 Cely.setup(with: window!, forModel: User.ref, requiredProperties: [.token], withOptions: [
-    .loginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
-    .homeStoryboard: UIStoryboard(name: "NonMain", bundle: nil)
+	.loginStoryboard: UIStoryboard(name: "MyCustomLogin", bundle: nil),
+	.homeStoryboard: UIStoryboard(name: "NonMain", bundle: nil)
 ])
 ```
 
-_Checkout Cely's [documentation](https://github.com/chaione/Cely#celyoptions) for more examples_
+_Expand the options table for `CelyOptions` inside of Cely's [documentation](https://github.com/chaione/Cely#celyoptions-1) for more examples_
 
 ## Conclusion
 I understand this approach is not for every use case, but when used appropriately, it can be quite powerful. As I'm reviewing old code, I'm seeing where this pattern would be useful. I feel things such as Network calls, components(like custom segmented controllers), and especially generic `UITableView` datasource/delegate classes(will be a post for the future) would highly benefit from this pattern. If you ever find yourself using this pattern, or if this pattern sparks an idea, please reach out!
