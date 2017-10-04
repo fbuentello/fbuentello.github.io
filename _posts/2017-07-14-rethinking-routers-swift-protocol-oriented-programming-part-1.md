@@ -4,6 +4,7 @@ title: "Rethinking Routers in Swift using Protocol Oriented Programming — Part
 tagline: "Supporting tagline"
 tags: 
   - swift
+canonical : https://chaione.com/blog/routers-swift-protocol-oriented-1/
 ---
 
 With any project, whether it's written in Swift, Objective-C, python, Ruby, etc. A big plus for all developers is to quickly learn about as much of the project without spending too much time going through each file.

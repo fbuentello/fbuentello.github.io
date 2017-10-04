@@ -4,6 +4,7 @@ title: "Rethinking Routers in Swift using Protocol Oriented Programming — Part
 tagline: "Supporting tagline"
 tags: 
   - swift
+canonical : https://chaione.com/blog/routers-swift-protocol-oriented-programming-part-2/
 ---
 
 ## Introduction
